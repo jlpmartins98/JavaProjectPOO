@@ -52,6 +52,10 @@ public class Teste {
                     System.out.println();
                     break;
                 case 3:
+                    System.out.println(festival.getE());                                                                                                    //mostra as edições
+                    System.out.println("Escolha a edição onde deseja colocar o filme, introduzindo a posição desejada, começando por 0");
+                    int ediEscolhida2 = scan.nextInt();                                                                                                      //guarda a posição escolhida da edição
+                    ed = festival.getE().get(ediEscolhida2);
                     System.out.println(ed.getFilmes());                                                                                                     
                     System.out.println("Escolha o filme onde deseja colocar o ator, introduzindo a posição desejada, começando por 0");         
                     int filmeEscolha = scan.nextInt();                                                                                                      
