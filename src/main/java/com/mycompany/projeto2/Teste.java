@@ -55,7 +55,8 @@ public class Teste {
                     System.out.println("Insira o nome do filme que pretende inserir na edição escolhida,na linha abaixo o género e na proxima linha abaixo o realiador");
                     //ed.addFilmes(new Filmes(br.readLine(),br.readLine(),br.readLine()));                                                                    //Cria um filme e adiciona o filme à edição 
                     Filmes f1 = new Filmes(br.readLine(),br.readLine(),br.readLine());
-                    if(ed.getFilmes().contains(f1)){
+                    boolean variavel = ed.contemFilme(f1);
+                    if(ed.contemFilme(f1)){
                         System.out.println("Este filme já existe!");
                     }
                     else{
