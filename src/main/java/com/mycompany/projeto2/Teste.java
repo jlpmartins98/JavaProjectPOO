@@ -31,10 +31,17 @@ public class Teste {
             switch(opcao){
                 case 1:
                     //Criar ediçao
+                    
                     System.out.println("A criar uma nova edição");
                     System.out.println("Escreva o ano e o número da edição, separados por espaços");
-                    festival.addEdicoes(new Edicao(scan.nextInt(), scan.nextInt()));
-                    System.out.println("Edição criada!");
+                    Edicao ed1 = new Edicao(scan.nextInt(),scan.nextInt());
+                    if(festival.getE().contains(ed1)){
+                        System.out.println("Essa edição já existe!");
+                    }
+                    else{
+                        festival.addEdicoes(ed1);
+                        System.out.println("Edição criada!");
+                    }
                     break;
                 case 2:
                     //associar os filmes às ediçoes criadas 
@@ -43,12 +50,19 @@ public class Teste {
                     int ediEscolhida = scan.nextInt();                                                                                                      //guarda a posição escolhida da edição
                     ed = festival.getE().get(ediEscolhida);                                                                                                 //obtem a edição, que está no array 
                     System.out.println(ed);                                                                                                                 //mostra a edição escolhida
-                    //criar Filmes
+                    //criar Filmes 
                     System.out.println("Criar Filmes");
                     System.out.println("Insira o nome do filme que pretende inserir na edição escolhida,na linha abaixo o género e na proxima linha abaixo o realiador");
-                    ed.addFilmes(new Filmes(br.readLine(),br.readLine(),br.readLine()));                                                                    //Cria um filme e adiciona o filme à edição 
-                    System.out.println(ed.getFilmes());                                                                                                     //mostra os filmes 
-                    System.out.println("Filme criado!");                   
+                    //ed.addFilmes(new Filmes(br.readLine(),br.readLine(),br.readLine()));                                                                    //Cria um filme e adiciona o filme à edição 
+                    Filmes f1 = new Filmes(br.readLine(),br.readLine(),br.readLine());
+                    if(ed.getFilmes().contains(f1)){
+                        System.out.println("Este filme já existe!");
+                    }
+                    else{
+                        ed.addFilmes(f1);
+                        System.out.println(ed.getFilmes());                                                                                                     //mostra os filmes 
+                        System.out.println("Filme criado!");                      
+                    }
                     System.out.println();
                     break;
                 case 3:
@@ -135,6 +149,5 @@ public class Teste {
             
     }
 
-        
 
 }
