@@ -66,5 +66,12 @@ public class Edicao {
         
     }
     
-
+    public boolean contemFilme(Filmes movie){
+        for(int i=0;i < this.filmes.size(); i++){
+            if(this.getFilmes().get(i).getNomeFilme().equals(movie.getNomeFilme())){
+                return true;
+            }
+        }
+        return false;
+    }
 }
