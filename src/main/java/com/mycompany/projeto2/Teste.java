@@ -1,6 +1,7 @@
 package com.mycompany.projeto2;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Teste {
@@ -13,6 +14,7 @@ public class Teste {
         Edicao ed = new Edicao();
         Filmes f = new Filmes();
         Festival festival = new Festival();
+        
         
         //ciclo para apresentar menu 
         do {
@@ -81,6 +83,7 @@ public class Teste {
                     System.out.println("Introduza o nome do ator,e na linha abaixo introduza os seus anos de carreira");
                     //f.addAtores(new Atores(br.readLine(),scan.nextInt()));
                     Atores a = new Atores(br.readLine(),scan.nextInt());
+
                     boolean var = ed.maximoAtoresFilmes(a);
                     if(var)
                         System.out.println("Este ator ja participou em dois filmes nesta edicao");
@@ -91,11 +94,13 @@ public class Teste {
                         else{
                             f.addAtores(a);
                             System.out.println("Atores neste filme: " + f.getAtores());
+                            //adiciona o nome do filme que o ator participa
+                            FilmesAtores fa = new FilmesAtores(a.getNome());
+                            fa.addNomeFilme(f.getNomeFilme());
+                            festival.addFilmesAtores(fa);
                         }
                     }
                     System.out.println(ed.getFilmes());  
-                    //f.addAtores(a);
-                    //System.out.println("Atores neste filme: " + f.getAtores());
                     System.out.println();
                     break;
                 case 4:
@@ -155,7 +160,12 @@ public class Teste {
                     System.out.println("Filmes dessa edição: ");
                     System.out.println(ed.getFilmes());
                     break; 
-                case 8: 
+                case 8:
+                    ArrayList<FilmesAtores> var2 = festival.getFilmesDosAtores();
+                    System.out.println(festival.getFilmesDosAtores());
+                    System.out.println();
+                    break;
+                case 9: 
                     System.out.println("Saindo da aplicação!");
                     break;
                 default:
@@ -163,7 +173,7 @@ public class Teste {
      
             }
             
-        } while (opcao!=8);
+        } while (opcao!=9);
 
     }
     //metodo para apresentar o menu menu
@@ -177,7 +187,8 @@ public class Teste {
             System.out.println("5- Atribuir papel principal");
             System.out.println("6- Atribuir Papel secundário");
             System.out.println("7- Ver edições");
-            System.out.println("8- Sair");  
+            System.out.println("8- Ver atores nos filmes em que participam");
+            System.out.println("9- Sair");  
     }
 
 }
