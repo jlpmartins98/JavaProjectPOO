@@ -28,7 +28,18 @@ public class Festival {
     public ArrayList<Edicao> getE() {
         return e;
     }
-
     
-  
+    /**
+     * verifica se ja contem um edição criada
+     * pelo numero de edição
+     */
+    public boolean contemEdicao(Edicao edi){
+        for(int i=0;i < this.e.size(); i++){                                 //percorre o array das edições 
+            if(this.getE().get(i).getNumEdicao()==(edi.getNumEdicao())){     //compara o numero edição que encontrou no array com o da edição inserida
+                return true;                                                 //caso encontre devolve true, ou seja, já existe essa edição criada
+            }
+        }
+        return false;
+    }
+
 }
