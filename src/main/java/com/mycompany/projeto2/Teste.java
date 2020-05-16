@@ -1,19 +1,10 @@
-
 package com.mycompany.projeto2;
 
 import java.io.*;
 import java.util.Scanner;
 
-//import javafx.geometry.Side;
-/**
- *
- * @author joaomartins
- */
-
 public class Teste {
 
-
-    
     public static void main(String[] args) throws IOException {
         int opcao;
 
@@ -90,13 +81,17 @@ public class Teste {
                     System.out.println("Introduza o nome do ator,e na linha abaixo introduza os seus anos de carreira");
                     //f.addAtores(new Atores(br.readLine(),scan.nextInt()));
                     Atores a = new Atores(br.readLine(),scan.nextInt());
-                    boolean var = ed.getFilmes().maximoAtoresFilmes(f, a);
+                    boolean var = ed.maximoAtoresFilmes(a);
+                    if(var)
+                        System.out.println("Este ator ja participou em dois filmes nesta edicao");
                     //verifica se há atores repetidos num filme
-                    if(f.atoresRepetidosNoFilme(a))
-                        System.out.println("Esse ator já existe neste filme!");
                     else{
-                        f.addAtores(a);
-                        System.out.println("Atores neste filme: " + f.getAtores());
+                        if(f.atoresRepetidosNoFilme(a))
+                            System.out.println("Esse ator já existe neste filme!");
+                        else{
+                            f.addAtores(a);
+                            System.out.println("Atores neste filme: " + f.getAtores());
+                        }
                     }
                     System.out.println(ed.getFilmes());  
                     //f.addAtores(a);
@@ -129,7 +124,6 @@ public class Teste {
                     //escolher as pessoas para os papeis principais
                     System.out.println("Escolha um ator para o papel principal");
                     //O utilizador escolhe um ator dos previamente introduzidos para tomar o papel principal
-                    //Ainda nao sei bem como fazer esta parte, ou seja como deixar o utilizador aceder ao array de atores e selecionar um
                     //Mostra todos os atores disponiveis ou seja o array de atores
                     System.out.println(f.getAtores());
                     //O utilizador escreve o nome do ator que deseja ter no papel principal e este é guardado numa variavel que depois no fim é usada no addPrincipais
@@ -170,8 +164,7 @@ public class Teste {
             }
             
         } while (opcao!=8);
-         
- 
+
     }
     //metodo para apresentar o menu menu
     public static void apresentarMenu(){
@@ -184,9 +177,7 @@ public class Teste {
             System.out.println("5- Atribuir papel principal");
             System.out.println("6- Atribuir Papel secundário");
             System.out.println("7- Ver edições");
-            System.out.println("8- Sair");
-            
+            System.out.println("8- Sair");  
     }
-
 
 }
