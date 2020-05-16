@@ -121,8 +121,30 @@ public class Filmes extends Edicao{
     }
 
 
+    /**
+     * criar contador ao criar atores para um certo filme
+     * acede atores verifica se ja esta nesse filme 
+     * e dentro do ciclo incrementa
+     * caso esteja em 2 filmes
+     * nao deixa criar o ator 
+     */
     
+    public boolean atoresRepetidosNoFilme(Atores actor){
+        for(int i= 0; i< this.atores.size(); i++){
+            if(this.getAtores().get(i).getNome().equals(actor.getNome()))
+                return true;
+        }
+        return false;
+    }
     
+    public boolean atrizesRepetidosNoFilme(Atriz atz){
+        for(int i= 0; i< this.getAtriz().size(); i++){
+            if(this.getAtriz().get(i).getNome().equals(atz.getNome()))
+                return true;
+        }
+        return false;
+    }
     
-    
+
+          
 }
