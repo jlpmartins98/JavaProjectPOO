@@ -14,9 +14,11 @@ import java.util.ArrayList;
 public class Festival {
     //array para as edições 
     private ArrayList<Edicao> e;
+    private ArrayList<FilmesAtores> filmesDosAtores;
     
     public Festival(){
         e = new ArrayList<Edicao>();
+        filmesDosAtores = new ArrayList<FilmesAtores>();
     }
 
     //metodo para adicionar filmes a uma edicao 
@@ -29,6 +31,7 @@ public class Festival {
         return e;
     }
     
+    
     /**
      * verifica se ja contem um edição criada
      * pelo numero de edição
@@ -40,6 +43,15 @@ public class Festival {
             }
         }
         return false;
+    }
+    
+    //adiciona uma instancia de filmes atores 
+    public void addFilmesAtores(FilmesAtores fa){
+        getFilmesDosAtores().add(fa);
+    }
+
+    public ArrayList<FilmesAtores> getFilmesDosAtores() {
+        return filmesDosAtores;
     }
 
 }
