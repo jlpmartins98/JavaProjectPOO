@@ -35,8 +35,16 @@ public class Teste {
                     System.out.println("A criar uma nova edição");
                     System.out.println("Escreva o ano e o número da edição, separados por espaços");
                     Edicao ed1 = new Edicao(scan.nextInt(),scan.nextInt());
+                    /*
                     if(festival.getE().contains(ed1)){
                         System.out.println("Essa edição já existe!");
+                    }
+                    else{
+                        festival.addEdicoes(ed1);
+                        System.out.println("Edição criada!");
+                    }*/
+                    if(festival.contemEdicao(ed1)){
+                        System.out.println("Esse edição já existe!");
                     }
                     else{
                         festival.addEdicoes(ed1);
@@ -55,7 +63,7 @@ public class Teste {
                     System.out.println("Insira o nome do filme que pretende inserir na edição escolhida,na linha abaixo o género e na proxima linha abaixo o realiador");
                     //ed.addFilmes(new Filmes(br.readLine(),br.readLine(),br.readLine()));                                                                    //Cria um filme e adiciona o filme à edição 
                     Filmes f1 = new Filmes(br.readLine(),br.readLine(),br.readLine());
-                    boolean variavel = ed.contemFilme(f1);
+                    //boolean variavel = ed.contemFilme(f1);
                     if(ed.contemFilme(f1)){
                         System.out.println("Este filme já existe!");
                     }
@@ -67,8 +75,9 @@ public class Teste {
                     System.out.println();
                     break;
                 case 3:
-                    System.out.println(festival.getE());                                                                                                    //mostra as edições
-                    System.out.println("Escolha a edição onde deseja colocar o filme, introduzindo a posição desejada, começando por 0");
+                    System.out.println(festival.getE());                                                                                                  //mostra as edições
+                    System.out.println("Aceder as edições e ao filme da edição escolhida, para introduzir o ator");
+                    System.out.println("Escolha a edição, introduzindo a posição desejada, começando por 0");
                     int ediEscolhida2 = scan.nextInt();                                                                                                      //guarda a posição escolhida da edição
                     ed = festival.getE().get(ediEscolhida2);        //obtem a edição 
                     System.out.println(ed.getFilmes());                                                                                                     
@@ -79,15 +88,42 @@ public class Teste {
                     //Criar atores
                     System.out.println("A criar atores");
                     System.out.println("Introduza o nome do ator,e na linha abaixo introduza os seus anos de carreira");
-                    f.addAtores(new Atores(br.readLine(),scan.nextInt()));                                                                                  
-                    System.out.println("Atores neste filme: " + f.getAtores());
+                    //f.addAtores(new Atores(br.readLine(),scan.nextInt()));
+                    Atores a = new Atores(br.readLine(),scan.nextInt());
+                    boolean var = ed.getFilmes().maximoAtoresFilmes(f, a);
+                    //verifica se há atores repetidos num filme
+                    if(f.atoresRepetidosNoFilme(a))
+                        System.out.println("Esse ator já existe neste filme!");
+                    else{
+                        f.addAtores(a);
+                        System.out.println("Atores neste filme: " + f.getAtores());
+                    }
+                    System.out.println(ed.getFilmes());  
+                    //f.addAtores(a);
+                    //System.out.println("Atores neste filme: " + f.getAtores());
                     System.out.println();
                     break;
                 case 4:
+                    System.out.println(festival.getE());                                                                                                  //mostra as edições
+                    System.out.println("Aceder as edições e ao filme da edição escolhida, para introduzir o ator");
+                    System.out.println("Escolha a edição, introduzindo a posição desejada, começando por 0");
+                    int ediEscolhida3 = scan.nextInt();                                                                                                      //guarda a posição escolhida da edição
+                    ed = festival.getE().get(ediEscolhida3);        //obtem a edição 
+                    System.out.println(ed.getFilmes());                                                                                                     
+                    System.out.println("Escolha o filme onde deseja colocar o ator, introduzindo a posição desejada, começando por 0");         
+                    int filmeEscolha2 = scan.nextInt();                                                                                                      
+                    f = ed.getFilmes().get(filmeEscolha2);
+                    System.out.println(f);
                     System.out.println("A criar atrizes");
                     System.out.println("Introduza o nome da atriz e na linha abaixo introduza os seus anos de carreira");
-                    f.addAtriz(new Atriz(br.readLine(),scan.nextInt()));
-                    System.out.println("Atrizes neste filme: " + f.getAtriz()); 
+                    Atriz atz = new Atriz(br.readLine(),scan.nextInt());
+                    if(f.atrizesRepetidosNoFilme(atz))
+                        System.out.println("Essa atriz já existe neste filme!");
+                    else{
+                        f.addAtriz(atz);
+                        System.out.println("Atrizes neste filme: " + f.getAtriz());
+                    }
+                    System.out.println(); 
                     break;
                 case 5:
                     //escolher as pessoas para os papeis principais
@@ -113,6 +149,8 @@ public class Teste {
                 case 6:
                     //escolher as pessoas para os papeis secundarios
                     //Esta parte é possivelmente desnecessaria como apos escolher os principais obrigatoriamente os outros serao todos secundarios
+                    System.out.println(f.getAtores());
+                    System.out.println(f.getAtriz());
                     System.out.println();
                     break;
                 case 7:
