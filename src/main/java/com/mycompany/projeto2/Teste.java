@@ -95,6 +95,8 @@ public class Teste {
                             f.addAtores(a);
                             System.out.println("Atores neste filme: " + f.getAtores());
                             //adiciona o nome do filme que o ator participa
+                            //criar uma condiçao para verificar se o ator ja esta noutro filme, caso esteja
+                            //percorrer o array dos filmes atores, e adicionar o nome do filme ao seu array de filmes
                             FilmesAtores fa = new FilmesAtores(a.getNome());
                             fa.addNomeFilme(f.getNomeFilme());
                             festival.addFilmesAtores(fa);
@@ -162,7 +164,7 @@ public class Teste {
                     break; 
                 case 8:
                     ArrayList<FilmesAtores> var2 = festival.getFilmesDosAtores();
-                    System.out.println(festival.getFilmesDosAtores());
+                    System.out.println(var2);
                     System.out.println();
                     break;
                 case 9: 
