@@ -75,13 +75,7 @@ public class Edicao {
         return false;
     }
     
-    
-    //metodo para mostrar os atores secundarios
-    public void mostraAtores(){
-        for (int i = 0; i < this.filmes.size(); i++) {
-            
-        }
-    }
+
     
     //verifica se tem mais de 2 atores nos filmes, em cada edição
     public boolean maximoAtoresFilmes(Atores act){
@@ -109,4 +103,27 @@ public class Edicao {
             }
         return false;
     }
+    
+    /*
+    public boolean mostraAtores(Atores act){
+
+            //percorre o array dos filmes 
+            for (int i = 0; i < this.filmes.size(); i++) 
+            {
+                //percorre o array dos atores do filme na posiçao i
+                for (int j = 0; j < this.getFilmes().get(i).getAtores().size(); j++){
+                        if(this.getFilmes().get(i).getAtores().get(j).getNome().equals(act.getNome())){
+                            System.out.println();
+                        }
+                    }
+                    //caso o ator ja tenha participado em mais que dois filmes nesta ediçao
+                    else{
+                        //System.out.println("Este ator ja participa em dois filmes nesta edicao");
+                        return true;
+                    }
+                }
+            }
+        return false;
+    }*/
+   
 }

@@ -16,7 +16,7 @@ public class FilmesAtores extends Atores{
         this.atoresFilmes = new ArrayList<String>();
     }
     
-    public FilmesAtores(String nome){
+    public FilmesAtores(String name){
         this.name = name;
         //this.nomeFilme = nomeFilme;
         atoresFilmes = new ArrayList<String>();
@@ -28,8 +28,12 @@ public class FilmesAtores extends Atores{
         this.atoresFilmes.add(nomeDoFilme);
     }
     
-    
-    
-    
+    public String toString(){
+        String info;
+        info = "Nome do ator: " + name + "\n";
+        info += "Filmes em que entra: " + atoresFilmes + "\n";
+        return info;
+    }
+
     
 }

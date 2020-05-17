@@ -6,12 +6,12 @@ public class Atores extends Filmes{
     
     //variaveis de instancia 
     private String nome;
-    private int anosCarreira; 
+    private int anosCarreira;
     
     //Construtores para os atores 
     public Atores(){ 
         nome = "";
-        anosCarreira = 0; 
+        anosCarreira = 0;
     }
     
     public Atores(String nome, int anosCarreira){
@@ -43,5 +43,5 @@ public class Atores extends Filmes{
         info = "Nome do ator: " + nome + "\n";
         info += "Anos de carreira: " + anosCarreira + "\n";
         return info;
-    }
+    } 
 }
