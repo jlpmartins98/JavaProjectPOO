@@ -104,6 +104,34 @@ public class Edicao {
         return false;
     }
     
+    //verifica se tem mais de duas atrizes nos filmes, em cada edição
+    public boolean maximoAtrizesFilmes(Atriz act){
+        int contador = 0; 
+
+               //percorre o array dos filmes 
+            for (int i = 0; i < this.filmes.size(); i++) 
+            {
+                //percorre o array das atrizes do filme na posiçao i
+                for (int j = 0; j < this.getFilmes().get(i).getAtriz().size(); j++)
+                {
+                    //verifica se o ator ja apareceu em algum filme
+                    if(contador != 1){
+                        //caso tenha incrementa o contador
+                        if(this.getFilmes().get(i).getAtriz().get(j).getNome().equals(act.getNome())){
+                            contador++;
+                        }
+                    }
+                    //caso a atriz ja tenha participado em mais que dois filmes nesta ediçao
+                    else{
+                        return true;
+                    }
+                }
+            }
+        return false;
+    }
+    
+    
+    
     /*
     public boolean mostraAtores(Atores act){
 

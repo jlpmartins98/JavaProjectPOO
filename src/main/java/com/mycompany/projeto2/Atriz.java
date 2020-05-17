@@ -47,7 +47,7 @@ public class Atriz extends Filmes{
     public String toString(){
         String info;
         //info = super.toString();
-        info = "Nome do ator: " + nome + "\n";
+        info = "Nome da atriz: " + nome + "\n";
         info += "Anos de carreira: " + anosCarreira + "\n";
         return info;
     }

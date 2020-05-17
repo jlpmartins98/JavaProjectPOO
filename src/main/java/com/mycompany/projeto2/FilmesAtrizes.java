@@ -2,35 +2,35 @@ package com.mycompany.projeto2;
 
 import java.util.ArrayList;
 
-public class FilmesAtores{
+public class FilmesAtrizes {
     
-    private ArrayList<String> atoresFilmes; 
+    private ArrayList<String> atrizesFilmes; 
     
     private String name; 
     private String nomeFilme;
     
-    public FilmesAtores(){
+    public FilmesAtrizes(){
         name = "";
         //nomeFilme= "";
-        this.atoresFilmes = new ArrayList<String>();
+        this.atrizesFilmes = new ArrayList<String>();
     }
     
-    public FilmesAtores(String name){
+    public FilmesAtrizes(String name){
         this.name = name;
         //this.nomeFilme = nomeFilme;
-        atoresFilmes = new ArrayList<String>();
+        atrizesFilmes = new ArrayList<String>();
     }
 
     
     //metodo para addicionar o nome do filme ao ator
     public void addNomeFilme(String nomeDoFilme){
-        this.atoresFilmes.add(nomeDoFilme);
+        this.atrizesFilmes.add(nomeDoFilme);
     }
     
     public String toString(){
         String info;
-        info = "Nome do ator: " + name + "\n";
-        info += "Filmes em que entra: " + atoresFilmes + "\n";
+        info = "Nome da atriz: " + name + "\n";
+        info += "Filmes em que entra: " + atrizesFilmes + "\n";
         return info;
     }
 

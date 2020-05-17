@@ -15,10 +15,12 @@ public class Festival {
     //array para as edições 
     private ArrayList<Edicao> e;
     private ArrayList<FilmesAtores> filmesDosAtores;
+    private ArrayList<FilmesAtrizes> filmesDasAtrizes;
     
     public Festival(){
         e = new ArrayList<Edicao>();
         filmesDosAtores = new ArrayList<FilmesAtores>();
+        filmesDasAtrizes = new ArrayList<FilmesAtrizes>();
     }
 
     //metodo para adicionar filmes a uma edicao 
@@ -52,6 +54,15 @@ public class Festival {
 
     public ArrayList<FilmesAtores> getFilmesDosAtores() {
         return filmesDosAtores;
+    }
+    
+    //adiciona uma instancia de filmes atrizes 
+    public void addFilmesAtrizes(FilmesAtrizes faz){
+        getFilmesDasAtrizes().add(faz);
+    }
+
+    public ArrayList<FilmesAtrizes> getFilmesDasAtrizes() {
+        return filmesDasAtrizes;
     }
 
 }
