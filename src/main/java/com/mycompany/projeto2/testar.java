@@ -21,8 +21,9 @@ public class testar {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
+        
+        
         /*
-       
         Scanner scan = new Scanner(System.in);
         System.out.println("ESCREVA NUMA LINHA O NOME E IDADE" + " separado por virgulas");
         System.out.print("Aqui->");
@@ -30,7 +31,7 @@ public class testar {
         System.out.println("linha lida: " + linha);
         
         //usando o split 
-        String[] campos = linha.split(",");
+        String[] campos = linha.s;
         System.out.println("Numeros de campos encontrados: " + campos.length);
         //guardar num arrayList
         ArrayList<String> camposLidos = new ArrayList<>();
@@ -99,40 +100,74 @@ public class testar {
             //leitura
             //cria a stream
 
-
+        
         FileReader inStream = new FileReader("Filmes.txt");
+        //FileOutputStream fileInput = new FileOutputStream("Filmes.txt");
+       // ObjectOutputStream input = new ObjectOutputStream(fileInput);
         BufferedReader bR = new BufferedReader(inStream);
-         //Scanner fileScan = new Scanner(inStream);
+        Scanner fileScan = new Scanner(inStream);
+        
         //ciclo de leitura e impressão no ecra
-        String a,b,c;
-        ArrayList<Filmes> lista = new ArrayList<Filmes>();
+        String a,b,c,line;
+        String nome;
+        //ArrayList<Filmes> lista = new ArrayList<Filmes>();
+        Edicao ed = new Edicao();
         try{
-            String line = bR.readLine();
+            line = bR.readLine();
             while(line!=null){
+                //falta o ano e numero da ediçao,arranjar um simbolo para esta
+                //para fazer as atrizes e atores principais basta fazer igual aos atores mas mudando o simbolo
+                //System.out.println(line);
+                if(line.charAt(0) == ';'){
+                    boolean stop = false;
+                    while(!stop){
+                        //cena de escrever os atores
+                        //le o nome do ator
+                        line = bR.readLine();
+                        if(line.charAt(0) == ';'){
+                            line = bR.readLine();
+                            break;
+                        }
+                        else{
+                            nome = line;
+                            line = bR.readLine();
+                            //le os anos de carreira do ator
+                            int anosCarreira = Integer.parseInt(line);
+                            //line = bR.readLine();
+                            Atores actor1 = new Atores(nome,anosCarreira);
+                            ed.getFilmes().get(ed.getFilmes().size() - 1).addAtores(actor1);
+                        }
+                        
+                    }
+                    //quando acabar, passamos as atrizes e depois temos os dois principais
+                }
+                else{
+                    a = line;
+                    line = bR.readLine();
+                    b = line;
+                    line = bR.readLine();
+                    c = line;
+                    line = bR.readLine();
+                    Filmes f = new Filmes(a,b,c);
+                    ed.addFilmes(f);
+                }
+                //substituir isto por readobject e tal
+                //criar um ciclo para ler os atores, neste ciclo temos a condiçao de paragem que é caso o proximo character seja ponto e virgula
+                //esta condiçao pode ser caso o string da linha seja ; q devolve uma booleana
+                //começamos a escrever os atores
                 
-                System.out.println(line);
-                
-                a = line;
-                //line = bR.readLine();
-                b = line;
-                //line = bR.readLine();
-                c = line;
-                //line = bR.readLine();
-                
-                Filmes f = new Filmes(a,b,c);
-                f.addFilmes(f);
-  
             }
-
             bR.close();
-         
         }   
         catch(IOException ioe){
             System.out.println("Ocorreu um erro!");
             ioe.getMessage();
-
         }
-        System.out.println(lista);
+        catch(NullPointerException e){
+            System.out.println("Ocorreu um erro do tipo NullPointerExeption");
+            e.getMessage();
+        }
+        System.out.println(ed.getFilmes());
    
         
         

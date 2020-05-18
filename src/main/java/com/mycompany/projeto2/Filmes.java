@@ -103,6 +103,7 @@ public class Filmes extends Edicao{
         info = "\nNome do filme: " + nomeFilme + "\n"; 
         info += "Género do filme: " + genero + "\n";
         info += "Realizador: " + realizador + "\n";
+        //mudar de "atores do filme" para "atores secundarios"
         info += "Atores do filme: " + atores + "\n" + atriz;
         info += "Ator principal:" + atoresPrincipais + "\nAtriz principal: " + atrizesPrincipais +"\n";
         return info;

@@ -1,6 +1,16 @@
-﻿
-Scary Movie Comedia
-
-Titanic Dois Romance
-
-Annabelle Terror
+﻿Titanic
+comedia
+pixel
+;
+;
+Scary movie
+drama
+jose
+;
+spot
+14
+JJ
+20
+sebastiao
+10
+;
