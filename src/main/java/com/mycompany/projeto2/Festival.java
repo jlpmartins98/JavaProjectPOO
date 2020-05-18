@@ -15,12 +15,12 @@ public class Festival {
     //array para as edições 
     private ArrayList<Edicao> e;
     private ArrayList<FilmesAtores> filmesDosAtores;
-    private ArrayList<FilmesAtrizes> filmesDasAtrizes;
+    
     
     public Festival(){
         e = new ArrayList<Edicao>();
         filmesDosAtores = new ArrayList<FilmesAtores>();
-        filmesDasAtrizes = new ArrayList<FilmesAtrizes>();
+        
     }
 
     //metodo para adicionar filmes a uma edicao 
@@ -56,13 +56,26 @@ public class Festival {
         return filmesDosAtores;
     }
     
-    //adiciona uma instancia de filmes atrizes 
-    public void addFilmesAtrizes(FilmesAtrizes faz){
-        getFilmesDasAtrizes().add(faz);
+    public boolean atorExistente(String nome){
+        //percorre o array onde tem os atores e os filmes em que participam
+        for(int i=0;i < this.getFilmesDosAtores().size();i++){
+            //caso se este ator ja esta em algum filme
+            if(this.getFilmesDosAtores().get(i).getName().equals(nome)){
+                return true;
+            }
+        }
+        return false;
     }
-
-    public ArrayList<FilmesAtrizes> getFilmesDasAtrizes() {
-        return filmesDasAtrizes;
+    
+    public int posicaoAtorExistente(String nome){
+        //percorre o array onde tem os atores e os filmes em que participam
+        for(int i=0; i < this.getFilmesDosAtores().size();i++){
+            //quando encontra o ator, devolve a sua posiçao no array
+            if(this.getFilmesDosAtores().get(i).getName().equals(nome)){
+                return i;
+            }
+        }
+        return 50;
     }
 
 }

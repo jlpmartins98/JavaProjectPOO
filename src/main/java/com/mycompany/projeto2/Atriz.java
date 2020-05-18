@@ -5,10 +5,6 @@
  */
 package com.mycompany.projeto2;
 
-/**
- *
- * @author Rodrigo
- */
 public class Atriz extends Filmes{
     
         //variaveis de instancia 

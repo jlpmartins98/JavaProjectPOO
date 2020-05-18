@@ -96,7 +96,6 @@ public class Edicao {
                     }
                     //caso o ator ja tenha participado em mais que dois filmes nesta ediçao
                     else{
-                        //System.out.println("Este ator ja participa em dois filmes nesta edicao");
                         return true;
                     }
                 }

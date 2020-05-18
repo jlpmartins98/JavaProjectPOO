@@ -1,11 +1,10 @@
 package com.mycompany.projeto2;
 
 import java.util.ArrayList;
-
+//array para guardar os atores e atrizes, tal como os filmes em que cada um participa
 public class FilmesAtores{
     
-    private ArrayList<String> atoresFilmes; 
-    
+    private ArrayList<String> atoresFilmes;
     private String name; 
     private String nomeFilme;
     
@@ -29,10 +28,16 @@ public class FilmesAtores{
     
     public String toString(){
         String info;
-        info = "Nome do ator: " + name + "\n";
+        info = "Nome do ator/atriz: " + getName() + "\n";
         info += "Filmes em que entra: " + atoresFilmes + "\n";
         return info;
     }
+    
+    public String getName() {
+        return name;
+    }
+    
+    
 
     
 }

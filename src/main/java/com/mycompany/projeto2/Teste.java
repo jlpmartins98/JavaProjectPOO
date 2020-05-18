@@ -74,22 +74,25 @@ public class Teste {
                     System.out.println();
                     break;
                 case 3:
-                    System.out.println(festival.getE());                                                                                                  //mostra as edições
+                    //caso de criar atores, temos de escolher primeiro a ediçao e de seguida o filme
+                    System.out.println(festival.getE());
+                    //caso nao tenha ediçoes
                     if(festival.getE().isEmpty()){
                         System.out.println("Crie uma edição primeiro");
                     }
+                    //caso tenha pelo menos uma ediçao
                     else{
                         System.out.println("Acedendo as edições e aos filme da edição escolhida, para introduzir o ator");
                         System.out.println("Escolha a edição, introduzindo a posição desejada, começando por 0");
                         int ediEscolhida2 = scan.nextInt();                                                                                                      //guarda a posição escolhida da edição
                         ed = festival.getE().get(ediEscolhida2);        //obtem a edição 
                         System.out.println(ed.getFilmes());
+                        //caso essa ediçao nao tenha filmes
                         if(ed.getFilmes().isEmpty()){
                             System.out.println("Crie primeiro um filme!");
                         }
-                    
+                        //caso a ediçao tenha pelo menos um filme
                         else{
-                            System.out.println(ed.getFilmes());
                             System.out.println("Escolha o filme onde deseja colocar o ator, introduzindo a posição desejada, começando por 0");         
                             int filmeEscolha = scan.nextInt();                                                                                                      
                             f = ed.getFilmes().get(filmeEscolha);
@@ -101,35 +104,43 @@ public class Teste {
                             Atores a = new Atores(br.readLine(),scan.nextInt());
 
                             boolean var = ed.maximoAtoresFilmes(a);
+                            //caso o ator ja tenha participado em dois filmes nesta ediçao
                             if(var)
                                 System.out.println("Este ator ja participou em dois filmes nesta edicao");
-                            //verifica se há atores repetidos num filme
                             else{
+                                //caso este ator ja esteja neste filme 
                                 if(f.atoresRepetidosNoFilme(a))
                                     System.out.println("Esse ator já existe neste filme!");
                                 else{
                                     f.addAtores(a);
                                     System.out.println("Atores neste filme: " + f.getAtores());
-                                    //adiciona o nome do filme que o ator participa
-                                    //criar uma condiçao para verificar se o ator ja esta noutro filme, caso esteja
-                                    //percorrer o array dos filmes atores, e adicionar o nome do filme ao seu array de filmes
-                                    FilmesAtores fa = new FilmesAtores(a.getNome());
-                                    fa.addNomeFilme(f.getNomeFilme());
-                                    festival.addFilmesAtores(fa);
+                                    //verifica se o ator ja participa em algum filme
+                                    if(festival.atorExistente(a.getNome())){
+                                        //caso o ator ja participe em algum filme, apenas adicionamos este filme ao seu array de filmes 
+                                        int variavel500 = festival.posicaoAtorExistente(a.getNome());
+                                        festival.getFilmesDosAtores().get(variavel500).addNomeFilme(f.getNomeFilme());
+                                    }
+                                    //caso esse ator nao participe em nenhum filme nesta ediçao
+                                    else{
+                                        FilmesAtores fa = new FilmesAtores(a.getNome());
+                                        fa.addNomeFilme(f.getNomeFilme());
+                                        festival.addFilmesAtores(fa);
+                                    }
                                 }
                             }
                         }
                     }  
                     System.out.println();
                     break;
+                    //mudar o codigo para ficar como o dos atores, ou seja adicionar os casos e as exepçoes
                 case 4:
                     System.out.println(festival.getE());                                                                                                  //mostra as edições
-                    System.out.println("Aceder as edições e ao filme da edição escolhida, para introduzir o ator");
+                    System.out.println("Aceder as edições e ao filme da edição escolhida, para introduzir a atriz");
                     System.out.println("Escolha a edição, introduzindo a posição desejada, começando por 0");
                     int ediEscolhida3 = scan.nextInt();                                                                                                      //guarda a posição escolhida da edição
                     ed = festival.getE().get(ediEscolhida3);        //obtem a edição 
                     System.out.println(ed.getFilmes());                                                                                                     
-                    System.out.println("Escolha o filme onde deseja colocar o ator, introduzindo a posição desejada, começando por 0");         
+                    System.out.println("Escolha o filme onde deseja colocar a atriz, introduzindo a posição desejada, começando por 0");         
                     int filmeEscolha2 = scan.nextInt();                                                                                                      
                     f = ed.getFilmes().get(filmeEscolha2);
                     System.out.println(f);
@@ -139,42 +150,85 @@ public class Teste {
                     boolean variavel = ed.maximoAtrizesFilmes(atz);
                     if(variavel)
                         System.out.println("Esta atriz ja participou em dois filmes nesta edicao");
-                    //verifica se há atores repetidos num filme
+                    //verifica se há atrizes repetidas num filme
                     else{
                         if(f.atrizesRepetidosNoFilme(atz))
                             System.out.println("Esta atriz já existe neste filme!");
+                        
                         else{
                             f.addAtriz(atz);
                             System.out.println("Atrizes neste filme: " + f.getAtriz());
                             //adiciona o nome do filme que o ator participa
                             //criar uma condiçao para verificar se a atriz ja esta noutro filme, caso esteja
                             //percorrer o array dos filmes atrizes, e adicionar o nome do filme ao seu array de filmes
-                            FilmesAtrizes fa = new FilmesAtrizes(atz.getNome());
-                            fa.addNomeFilme(f.getNomeFilme());
-                            festival.addFilmesAtrizes(fa);
+                            FilmesAtores fa2 = new FilmesAtores(atz.getNome());
+                            fa2.addNomeFilme(f.getNomeFilme());
+                            festival.addFilmesAtores(fa2);
                         }
                     }
                     System.out.println(); 
                     break;
                 case 5:
-                    //escolher as pessoas para os papeis principais
-                    System.out.println("Escolha um ator para o papel principal");
-                    //O utilizador escolhe um ator dos previamente introduzidos para tomar o papel principal
-                    //Mostra todos os atores disponiveis ou seja o array de atores
-                    System.out.println(f.getAtores());
-                    //O utilizador escreve o nome do ator que deseja ter no papel principal e este é guardado numa variavel que depois no fim é usada no addPrincipais
-                    System.out.println("Escolha a posicao do ator desejado, começando no 0");
-                    //Falta aqi os casos de o utilizador inserir um index invalido, ou nao inserir um inteiro
-                    //Basicamente os try e catch com os erros apropriados
-                    f.addPrincipalMale(f.getAtores().get(scan.nextInt()));
-                    System.out.println("Escolha uma atriz para o papel principal");
-                    //Mostra o array das atrizes disponiveis
-                    System.out.println(f.getAtriz());
-                    System.out.println("Escolha a posicao da atriz desejada,começando no 0");
-                    f.addPrincipalFemale(f.getAtriz().get(scan.nextInt()));
-                    System.out.println("Ator Principal neste Filme :" + f.getPrincipaisMale());
-                    System.out.println("Atriz principal neste filme:" + f.getPrincipaisFemale());
-                    System.out.println();
+                    //para atribuir um papel principal, temos de escolher primeiro a ediçao e de seguida o filme
+                    System.out.println(festival.getE());
+                    //caso nao tenha ediçoes
+                    if(festival.getE().isEmpty()){
+                        System.out.println("Crie uma edição primeiro");
+                    }
+                    //caso tenha pelo menos uma ediçao
+                    else{
+                        System.out.println("Acedendo as edições e aos filme da edição escolhida, para introduzir o ator");
+                        System.out.println("Escolha a edição, introduzindo a posição desejada, começando por 0");
+                        int ediEscolhida200 = scan.nextInt();                                                                                                      //guarda a posição escolhida da edição
+                        ed = festival.getE().get(ediEscolhida200);        //obtem a edição 
+                        System.out.println(ed.getFilmes());
+                        //caso essa ediçao nao tenha filmes
+                        if(ed.getFilmes().isEmpty()){
+                            System.out.println("Crie primeiro um filme!");
+                        }
+                        //caso a ediçao tenha pelo menos um filme
+                        else{
+                            System.out.println("Escolha o filme onde deseja colocar o ator, introduzindo a posição desejada, começando por 0");         
+                            int filmeEscolha100 = scan.nextInt();                                                                                                      
+                            f = ed.getFilmes().get(filmeEscolha100);
+                            System.out.println(f);
+                            System.out.println("Escolha se quer um ator principal(0) ou uma atriz principal, (1)");
+                            int male_female = scan.nextInt();
+                            //caso introduza um ator principal
+                            if (male_female == 0){
+                                //verificar se este filme ja contem um ator principal 
+                                //caso contenha avisa o utilizador
+                                if(!f.getPrincipaisMale().isEmpty()){
+                                    System.out.println("Este filme ja tem um ator principal");
+                                }
+                                //caso nao tenha nenhum ator principal
+                                else{
+                                    System.out.println("Escolha a posiçao do ator que deseja colocar no papel principal deste filme, começando no 0 ");
+                                    System.out.println(f.getAtores());
+                                    int atorEscolhido = scan.nextInt();
+                                    Atores a5 = f.getAtores().get(atorEscolhido);
+                                    f.addPrincipalMale(a5);
+                                    System.out.println(f);
+                                }
+                            }
+                            else{
+                                 //verificar se este filme ja contem uma atriz principal 
+                                //caso contenha avisa o utilizador
+                                if(!f.getPrincipaisFemale().isEmpty()){
+                                    System.out.println("Este filme ja tem uma atriz principal");
+                                }
+                                //caso nao tenha nenhuma atriz principal
+                                else{
+                                    System.out.println("Escolha a posiçao da atriz que deseja colocar no papel principal deste filme, começando no 0 ");
+                                    System.out.println(f.getAtriz());
+                                    int atrizEscolhida = scan.nextInt();
+                                    Atriz a6 = f.getAtriz().get(atrizEscolhida);
+                                    f.addPrincipalFemale(a6);
+                                    System.out.println(f);
+                                }
+                            }  
+                        }
+                    }
                     break;
                 case 6:
                     //escolher as pessoas para os papeis secundarios
@@ -193,9 +247,9 @@ public class Teste {
                     break; 
                 case 8:
                     ArrayList<FilmesAtores> var2 = festival.getFilmesDosAtores();
-                    ArrayList<FilmesAtrizes> var3 = festival.getFilmesDasAtrizes();
+                  //ArrayList<FilmesAtrizes> var3 = festival.getFilmesDasAtrizes();
                     System.out.println(var2);
-                    System.out.println(var3);
+                   // System.out.println(var3);
                     System.out.println();
                     break;
                 case 9: 
