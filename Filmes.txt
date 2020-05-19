@@ -1,4 +1,7 @@
-﻿Titanic
+2020
+1
+-
+Titanic
 comedia
 pixel
 ;
@@ -14,3 +17,9 @@ JJ
 sebastiao
 10
 ;
+:
+Angelina 
+12
+Lara croft
+15
+:

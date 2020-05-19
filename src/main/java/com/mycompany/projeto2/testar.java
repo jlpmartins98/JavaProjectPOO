@@ -118,7 +118,28 @@ public class testar {
                 //falta o ano e numero da ediçao,arranjar um simbolo para esta
                 //para fazer as atrizes e atores principais basta fazer igual aos atores mas mudando o simbolo
                 //System.out.println(line);
-                if(line.charAt(0) == ';'){
+                if(line.charAt(0) == '-'){
+                    boolean stop = false; 
+                    //enquanto for verdade
+                    while(!stop){
+                        line = bR.readLine();
+                        if(line.charAt(0) == '-'){
+                            line = bR.readLine();
+                            break;
+                        }
+                        else{
+                            int ano = Integer.parseInt(line);
+                            int numDeEdicao = Integer.parseInt(line);
+                            //cria edição 
+                            Festival fest = new Festival();
+                            Edicao edi = new Edicao(ano, numDeEdicao);
+                            fest.addEdicoes(edi);
+                            System.out.println(fest.getE());
+                        }
+                    }
+                }
+
+                else if(line.charAt(0) == ';'){
                     boolean stop = false;
                     while(!stop){
                         //cena de escrever os atores
@@ -140,6 +161,31 @@ public class testar {
                         
                     }
                     //quando acabar, passamos as atrizes e depois temos os dois principais
+                }
+                //para as atrizes 
+                else if(line.charAt(0) == ':'){
+                    boolean stop = false;
+                        while(!stop){
+                        //cena de escrever os atores
+                        //le o nome do ator
+                        line = bR.readLine();
+                        if(line.charAt(0) == ':'){
+                            line = bR.readLine();
+                            break;
+                        }
+                        else{
+                            nome = line;
+                            line = bR.readLine();
+                            //le os anos de carreira do ator
+                            int anosCarreira = Integer.parseInt(line);
+                            //line = bR.readLine();
+                            Atriz atriz1 = new Atriz(nome,anosCarreira);
+                            ed.getFilmes().get(ed.getFilmes().size() - 1).addAtriz(atriz1);
+                        }
+                        
+                    }
+                    
+                    
                 }
                 else{
                     a = line;
@@ -167,6 +213,7 @@ public class testar {
             System.out.println("Ocorreu um erro do tipo NullPointerExeption");
             e.getMessage();
         }
+
         System.out.println(ed.getFilmes());
    
         
