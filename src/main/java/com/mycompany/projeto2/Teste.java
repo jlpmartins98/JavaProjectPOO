@@ -44,6 +44,7 @@ public class Teste {
                         System.out.println("Edição criada!");
                     }
                     break;
+
                 case 2:
                     //associar os filmes às ediçoes criadas 
                     System.out.println(festival.getE());                                                                                                   //mostra as edições
@@ -268,14 +269,15 @@ public class Teste {
         
             System.out.println("Escolha uma opção");
             System.out.println("1- Criar uma nova Edição");
-            System.out.println("2- Criar Filmes");
-            System.out.println("3- Criar atores");
-            System.out.println("4- Criar atrizes");
-            System.out.println("5- Atribuir papel principal");
-            System.out.println("6- Atribuir Papel secundário");
-            System.out.println("7- Ver edições");
-            System.out.println("8- Ver atores nos filmes em que participam");
-            System.out.println("9- Sair");  
+            System.out.println("2- Criar Festival a partir de um ficheiro de texto");
+            System.out.println("3- Criar Filmes");
+            System.out.println("4- Criar atores");
+            System.out.println("5- Criar atrizes");
+            System.out.println("6- Atribuir papel principal");
+            System.out.println("7- Atribuir Papel secundário");
+            System.out.println("8- Ver edições");
+            System.out.println("9- Ver atores nos filmes em que participam");
+            System.out.println("10- Sair");  
     }
 
 }

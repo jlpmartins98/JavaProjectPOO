@@ -133,12 +133,13 @@ public class testar {
                         }
                         else{
                             int ano = Integer.parseInt(line);
+                            line = bR.readLine();
                             int numDeEdicao = Integer.parseInt(line);
                             //cria edição, a instanciaçao do festival nao tem q estar fora do ciclo?
                            
-                            Edicao edi = new Edicao(ano, numDeEdicao);
-                            fest.addEdicoes(edi);
-                            System.out.println(fest.getE());
+                            ed = new Edicao(ano, numDeEdicao);
+                            fest.addEdicoes(ed);
+                            //System.out.println(fest.getE());
                         }
                     }
                 }
@@ -165,8 +166,10 @@ public class testar {
                             Filmes filmeAtual = ed.getFilmes().get(ed.getFilmes().size() - 1);
                             Edicao edicaoAtual = fest.getE().get(fest.getE().size() - 1);
                             //adicionar as exeçoes do ator ja estar em 2 filmes nesta ediçao ou o caso de ja estar neste filme
-                            if(!filmeAtual.atoresRepetidosNoFilme(actor1) && !edicaoAtual.maximoAtoresFilmes(actor1)){
-                                filmeAtual.addAtores(actor1);
+                            if(!edicaoAtual.maximoAtoresFilmes(actor1)){
+                                if(!filmeAtual.atoresRepetidosNoFilme(actor1)) {
+                                    filmeAtual.addAtores(actor1);
+                                }
                             }
                             //alterar estes prints para demonstrar o filme em q nao entrou etc
                             //provavelmente dividir o if anterior em dois diferentes
@@ -198,7 +201,15 @@ public class testar {
                             Atriz atriz1 = new Atriz(nome,anosCarreira);
                             Filmes filmeAtual = ed.getFilmes().get(ed.getFilmes().size() - 1);
                             Edicao edicaoAtual = fest.getE().get(fest.getE().size() - 1);
-                            filmeAtual.addAtriz(atriz1);
+                            if(!edicaoAtual.maximoAtrizesFilmes(atriz1)){
+                                if(!filmeAtual.atrizesRepetidosNoFilme(atriz1)){
+                                    filmeAtual.addAtriz(atriz1);
+                                }
+                            }
+                            else{
+                                System.out.println("Esta atriz não podes participar neste filme!");
+                            }
+                            
                         }
                         
                     }   
@@ -227,18 +238,21 @@ public class testar {
                                 filmeAtual.addPrincipalMale(actor1);
                             }
                             else{
-                                System.out.println("este filme ja tem um ator principal");
+                                System.out.print("Ocorreu um erro! No filme: ");
+                                System.out.println(filmeAtual.getNomeFilme());
+                                System.out.println("Este filme já tem um ator principal");
+                                System.out.println();
                             }
                         }
                     }  
                 }
                 //para a atriz principal
-                else if(line.charAt(0) == '«'){
+                else if(line.charAt(0) == '+'){
                     boolean stop3 = false;
                     while(!stop3){
                         //em vez de termos o codigo todo do caso no teste,por numa funçao e chamar aqi
                         line = bR.readLine();
-                        if(line.charAt(0) == '«'){
+                        if(line.charAt(0) == '+'){
                             line = bR.readLine();
                             break;
                         }
@@ -287,8 +301,14 @@ public class testar {
             System.out.println("Ocorreu um erro do tipo NullPointerExeption");
             e.getMessage();
         }
+        //percorre o array das edições
+        for (int i = 0; i < fest.getE().size(); i++) {
+            //for (int j = 0; j < fest.getE().get(i).getFilmes().size(); j++) {
+                System.out.println(fest.getE().get(i));
+                System.out.println(fest.getE().get(i).getFilmes());
 
-        System.out.println(ed.getFilmes());
+        }
+        //System.out.println(ed.getFilmes());
    
         
         

@@ -1,3 +1,4 @@
+-
 2020
 1
 -
@@ -23,3 +24,40 @@ Angelina
 Lara croft
 15
 :
+/
+Da vinci
+17
+/
++
+Girl
+39
++
+-
+2019
+2
+-
+La casa papel
+Acao
+Berlim
+;
+Professor
+23
+Denver 
+8
+;
+:
+Nairobi
+9
+Tokyo
+11
+:
++
+Inspetora
+25
++
+/
+Macaco
+12
+Professor
+23
+/

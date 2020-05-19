@@ -5,9 +5,7 @@
  */
 package com.mycompany.projeto2;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -15,12 +13,8 @@ import java.util.Scanner;
  *
  * @author joaomartins
  */
-public class testarFile {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws IOException{
+public class FicheiroTeste{
+        
         FileReader inStream = new FileReader("Filmes.txt");
         //FileOutputStream fileInput = new FileOutputStream("Filmes.txt");
        // ObjectOutputStream input = new ObjectOutputStream(fileInput);
@@ -259,4 +253,4 @@ public class testarFile {
 
     }
     
-}
+
