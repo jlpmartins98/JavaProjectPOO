@@ -212,7 +212,7 @@ public class Teste {
                                     System.out.println(f);
                                 }
                             }
-                            else{
+                            else if(male_female == 1){
                                  //verificar se este filme ja contem uma atriz principal 
                                 //caso contenha avisa o utilizador
                                 if(!f.getPrincipaisFemale().isEmpty()){
@@ -227,7 +227,10 @@ public class Teste {
                                     f.addPrincipalFemale(a6);
                                     System.out.println(f);
                                 }
-                            }  
+                            }
+                            else{
+                                System.out.println("Erro, opcao invalida");
+                            }
                         }
                     }
                     break;
@@ -269,7 +272,7 @@ public class Teste {
         
             System.out.println("Escolha uma opção");
             System.out.println("1- Criar uma nova Edição");
-            System.out.println("2- Criar Festival a partir de um ficheiro de texto");
+           // System.out.println("2- Criar Festival a partir de um ficheiro de texto");
             System.out.println("3- Criar Filmes");
             System.out.println("4- Criar atores");
             System.out.println("5- Criar atrizes");

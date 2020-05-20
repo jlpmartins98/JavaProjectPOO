@@ -15,6 +15,11 @@ public class Festival {
     //array para as edições 
     private ArrayList<Edicao> e;
     private ArrayList<FilmesAtores> filmesDosAtores;
+    private ArrayList<String> categorias;
+    private ArrayList<String> filmesDoFestival;
+    private ArrayList<Atores> atoresPrincipais;
+    private ArrayList<String> realizadoresFestival;
+    private ArrayList<Atriz> atrizesPrincipais;
     
     
     public Festival(){
@@ -77,5 +82,80 @@ public class Festival {
         }
         return 50;
     }
-
+    //funcao para guardar todos os generos de filme, depois sera usada para a pontuaçao
+    public void categoriasFestival(){
+        //percorre as ediçoes
+        int numeroEdicoes = this.getE().size();
+        for(int i = 0; i < numeroEdicoes; i++){
+            //pecorre os filmes da ediçao
+            int numeroFilmesNaEdicao = this.getE().get(i).getFilmes().size();
+            for(int j = 0; j < numeroFilmesNaEdicao; j++){
+                Filmes filme = this.getE().get(i).getFilmes().get(j);
+                categorias.add(filme.getGenero());
+            }
+        }
+    }
+    //funcao para colocar todos os filmes do festival num array, sera utilizada para atribuir premios
+    public void filmesFestival(){
+        //percorre as ediçoes
+        int numeroEdicoes = this.getE().size();
+        for(int i = 0; i < numeroEdicoes; i++){
+            //pecorre os filmes da ediçao
+            int numeroFilmesNaEdicao = this.getE().get(i).getFilmes().size();
+            for(int j = 0; j < numeroFilmesNaEdicao; j++){
+                Filmes filme = this.getE().get(i).getFilmes().get(j);
+                filmesDoFestival.add(filme.getNomeFilme());
+            }
+        }
+    }
+    
+    //funcao para guardar todos os realizadores participantes no festival num array
+    public void realizadoresFestival(){
+         //percorre as ediçoes
+        int numeroEdicoes = this.getE().size();
+        for(int i = 0; i < numeroEdicoes; i++){
+            //pecorre os filmes da ediçao
+            int numeroFilmesNaEdicao = this.getE().get(i).getFilmes().size();
+            for(int j = 0; j < numeroFilmesNaEdicao; j++){
+                Filmes filme = this.getE().get(i).getFilmes().get(j);
+                realizadoresFestival.add(filme.getRealizador());
+            }
+        }
+    }
+    
+    //funcao para colocar todos os atores principais num array, sera usada para atribuir premios
+    //a funcao guarda tambem os anos de carreira, o que sera util para o premio de carreira
+    public void atoresPrincipais(){
+        //percorre as ediçoes
+        int numeroEdicoes = this.getE().size();
+        for(int i = 0; i < numeroEdicoes; i++){
+            //pecorre os filmes da ediçao
+            int numeroFilmesNaEdicao = this.getE().get(i).getFilmes().size();
+            for(int j = 0; j < numeroFilmesNaEdicao; j++){
+                Filmes filme = this.getE().get(i).getFilmes().get(j);
+                //acede ao array dos atores Principais do filme
+                for(int k=0; k < filme.getPrincipaisMale().size();k++){
+                    Atores actPrincipal = filme.getPrincipaisMale().get(k);
+                    atoresPrincipais.add(actPrincipal);
+                }
+            }
+        }
+    }
+    
+    public void atrizesPrincipais(){
+        //percorre as ediçoes
+        int numeroEdicoes = this.getE().size();
+        for(int i = 0; i < numeroEdicoes; i++){
+            //pecorre os filmes da ediçao
+            int numeroFilmesNaEdicao = this.getE().get(i).getFilmes().size();
+            for(int j = 0; j < numeroFilmesNaEdicao; j++){
+                Filmes filme = this.getE().get(i).getFilmes().get(j);
+                //acede ao array dos atores Principais do filme
+                for(int k=0; k < filme.getPrincipaisMale().size();k++){
+                    Atriz actressPrincipal = filme.getPrincipaisFemale().get(k);
+                    atrizesPrincipais.add(actressPrincipal);
+                }
+            }
+        }
+    }
 }

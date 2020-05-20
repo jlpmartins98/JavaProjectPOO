@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @author joaomartins
  */
 public class FicheiroTeste{
-        
+        /*
         FileReader inStream = new FileReader("Filmes.txt");
         //FileOutputStream fileInput = new FileOutputStream("Filmes.txt");
        // ObjectOutputStream input = new ObjectOutputStream(fileInput);
@@ -36,7 +36,7 @@ public class FicheiroTeste{
         */
                 
     
-        
+        /*
         try{
             line = bR.readLine();
             while(line!=null){
@@ -249,7 +249,7 @@ public class FicheiroTeste{
             System.out.println();
                 
 
-        }
+        }*/
 
     }
     
