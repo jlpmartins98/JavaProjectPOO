@@ -26,8 +26,8 @@ public class Festival {
     
     private ArrayList<String> atoresPremioCarreira;
     private ArrayList<String> atrizesPremioCarreira;
-    private ArrayList<String> premioCarreira;
-    
+    private ArrayList<String> candidatosPremioCarreira;
+    private ArrayList<String> finalistasPremioCarreira;
     
     private ArrayList<Atores> quatroAtores;
     private ArrayList<Atriz> quatroAtrizes;
@@ -38,7 +38,22 @@ public class Festival {
     public Festival(){
         e = new ArrayList<Edicao>();
         filmesDosAtores = new ArrayList<FilmesAtores>();
-        
+        categorias = new ArrayList<String>();
+        realizadoresFestival = new ArrayList<String>();
+        atoresPrincipais = new ArrayList<Atores>();
+        atrizesPrincipais = new ArrayList<Atriz>();
+        filmesDoFestival = new ArrayList<String>();
+        actors = new ArrayList<Atores>();
+        actress = new ArrayList<Atriz>();
+        atoresPremioCarreira = new ArrayList<String>();
+        atrizesPremioCarreira = new ArrayList<String>();
+        candidatosPremioCarreira = new ArrayList<String>();
+        finalistasPremioCarreira = new ArrayList<String>();
+        quatroAtores = new ArrayList<Atores>();
+        quatroAtrizes = new ArrayList<Atriz>();
+        quatroFilmes = new ArrayList<String>();
+        quatroAtoresPrincipais = new ArrayList<String>();
+        quatroAtrizesPrincipais = new ArrayList<String>();
     }
 
     //metodo para adicionar filmes a uma edicao 
@@ -109,9 +124,13 @@ public class Festival {
             int numeroFilmesNaEdicao = this.getE().get(i).getFilmes().size();
             for(int j = 0; j < numeroFilmesNaEdicao; j++){
                 Filmes filme = this.getE().get(i).getFilmes().get(j);
-                categorias.add(filme.getGenero());
+                if(getRealizadoresFestival().size() > 0){
+                    if(!getRealizadoresFestival().contains(filme.getGenero())){
+                        categorias.add(filme.getGenero());
+                    }
+                }
             }
-        }
+        }       
     }
     //funcao para colocar todos os filmes do festival num array, sera utilizada para atribuir premios
     public void filmesFestival(){
@@ -122,7 +141,8 @@ public class Festival {
             int numeroFilmesNaEdicao = this.getE().get(i).getFilmes().size();
             for(int j = 0; j < numeroFilmesNaEdicao; j++){
                 Filmes filme = this.getE().get(i).getFilmes().get(j);
-                getFilmesDoFestival().add(filme.getNomeFilme());
+                if(!getRealizadoresFestival().contains(filme.getNomeFilme()))
+                    getFilmesDoFestival().add(filme.getNomeFilme());
             }
         }
     }
@@ -136,7 +156,8 @@ public class Festival {
             int numeroFilmesNaEdicao = this.getE().get(i).getFilmes().size();
             for(int j = 0; j < numeroFilmesNaEdicao; j++){
                 Filmes filme = this.getE().get(i).getFilmes().get(j);
-                getRealizadoresFestival().add(filme.getRealizador());
+                if(!getRealizadoresFestival().contains(filme.getRealizador()))
+                    getRealizadoresFestival().add(filme.getRealizador());
             }
         }
     }
@@ -154,14 +175,16 @@ public class Festival {
                 //acede ao array dos atores Principais do filme
                 for(int k=0; k < filme.getPrincipaisMale().size();k++){
                     Atores actPrincipal = filme.getPrincipaisMale().get(k);
-                    getAtoresPrincipais().add(actPrincipal);
-                    //guarda esse ator para o premio carreira caso tenha mais de 20 anos de carreira
-                    if(actPrincipal.getAnosCarreira()>20){
-                        //caso ainda nao tenha esse ator 
-                        if(!getAtoresPremioCarreira().contains(actPrincipal.getNome())){
-                            //entao adiciona o
-                            getAtoresPremioCarreira().add(actPrincipal.getNome());
-                        }    
+                    if(!getAtoresPrincipais().contains(actPrincipal)){
+                        getAtoresPrincipais().add(actPrincipal);
+                        //guarda esse ator para o premio carreira caso tenha mais de 20 anos de carreira
+                        if(actPrincipal.getAnosCarreira()>20){
+                            //caso ainda nao tenha esse ator 
+                            if(!getAtoresPremioCarreira().contains(actPrincipal.getNome())){
+                                //entao adiciona o
+                                getAtoresPremioCarreira().add(actPrincipal.getNome());
+                            }    
+                        }
                     }
                 }
             }
@@ -179,15 +202,17 @@ public class Festival {
                 //percorre o array dos atores do filme
                 for (int k = 0; k < filme.getAtores().size(); k++) {
                     Atores actor = filme.getAtores().get(k);
-                    getActors().add(actor);
-                    //guarda esse ator para o premio carreira caso tenha mais de 20 anos de carreira
-                    if(actor.getAnosCarreira()>20){
-                        //caso ainda não tenha essa ator
-                        if(!getAtoresPremioCarreira().contains(actor.getNome())){
-                            //adiciona o
-                            getAtoresPremioCarreira().add(actor.getNome()); 
+                    if(!getActors().contains(actor)){
+                        getActors().add(actor);
+                        //guarda esse ator para o premio carreira caso tenha mais de 20 anos de carreira
+                        if(actor.getAnosCarreira()>20){
+                            //caso ainda não tenha essa ator
+                            if(!getAtoresPremioCarreira().contains(actor.getNome())){
+                                //adiciona o
+                                getAtoresPremioCarreira().add(actor.getNome()); 
+                            }
+
                         }
-                        
                     }
                     
                 }
@@ -207,13 +232,15 @@ public class Festival {
                 //acede ao array dos atores Principais do filme
                 for(int k=0; k < filme.getPrincipaisMale().size();k++){
                     Atriz actressPrincipal = filme.getPrincipaisFemale().get(k);
-                    getAtrizesPrincipais().add(actressPrincipal);
-                    //guarda essa atriz para o premio carreira caso tenha mais de 20 anos de carreira
-                    if(actressPrincipal.getAnosCarreira()>20){
-                        //caso ainda nao tenha essa atriz 
-                        if(!getAtrizesPremioCarreira().contains(actressPrincipal.getNome())){
-                            //adiciona a 
-                            getAtrizesPremioCarreira().add(actressPrincipal.getNome());
+                    if(!getAtrizesPrincipais().contains(actressPrincipal)){
+                        getAtrizesPrincipais().add(actressPrincipal);
+                        //guarda essa atriz para o premio carreira caso tenha mais de 20 anos de carreira
+                        if(actressPrincipal.getAnosCarreira()>20){
+                            //caso ainda nao tenha essa atriz 
+                            if(!getAtrizesPremioCarreira().contains(actressPrincipal.getNome())){
+                                //adiciona a 
+                                getAtrizesPremioCarreira().add(actressPrincipal.getNome());
+                            }
                         }
                     }
                 }
@@ -233,15 +260,17 @@ public class Festival {
                 //percorre o array dos atores do filme
                 for (int k = 0; k < filme.getAtores().size(); k++) {
                     Atriz actriz = filme.getAtriz().get(k);
-                    getActress().add(actriz);
-                    //guarda essa atriz para o premio carreira caso tenha mais de 20 anos de carreira      
-                    if(actriz.getAnosCarreira()>20){
-                        //caso ainda nao tenha essa atriz 
-                        if(!getAtrizesPremioCarreira().contains(actriz.getNome())){
-                            //adiciona a 
-                            getAtrizesPremioCarreira().add(actriz.getNome());
+                    if(!getActress().contains(actriz)){
+                        getActress().add(actriz);
+                        //guarda essa atriz para o premio carreira caso tenha mais de 20 anos de carreira      
+                        if(actriz.getAnosCarreira()>20){
+                            //caso ainda nao tenha essa atriz 
+                            if(!getAtrizesPremioCarreira().contains(actriz.getNome())){
+                                //adiciona a 
+                                getAtrizesPremioCarreira().add(actriz.getNome());
+                            }
+
                         }
-                        
                     }
                     
                 }
@@ -256,9 +285,9 @@ public class Festival {
      */
     //escolhe os quatro filmes 
     public void candidatosFilmes(){
-        int candidatos = 0;
+        //int candidatos = 0;
         //enquanto nao tiver os 4 candidatos
-        if(candidatos != 4){
+        if(getQuatroFilmes().size() < 4){
             //percorre o array onde está guardado os filmes a premiar
             for (int i = 0; i < filmesDoFestival.size(); i++) {
                 Random random = new Random();
@@ -270,16 +299,16 @@ public class Festival {
                 if(!quatroFilmes.contains(filmeEscolhidoPremio)){
                     //adiciona ao array que vai guardar os 4 filmes a ser premiados
                     getQuatroFilmes().add(filmeEscolhidoPremio);
-                    candidatos++;
+                    //candidatos++;
                 }
             }
         }
     }
     //escolhe os quatro atores
     public void candidatosAtor(){
-        int candidatos = 0;
+        //int candidatos = 0;
         //enquanto nao tiver os 4 candidatos
-        if(candidatos != 4){
+        if(getQuatroAtores().size() < 4){
             //percorre o array onde está guardado os candidatos a premiar
             for (int i = 0; i < actors.size(); i++) {
                 Random random = new Random();
@@ -291,7 +320,7 @@ public class Festival {
                 if(!quatroAtores.contains(atoresEscolhidoACandidato)){
                     //adiciona ao array que vai guardar os candidatos a ser premiados
                     getQuatroAtores().add(atoresEscolhidoACandidato);
-                    candidatos++;
+                    //candidatos++;
                 }
             }
         }
@@ -300,9 +329,9 @@ public class Festival {
     
     //escolhe as  quatro atrizes
     public void candidatosAtriz(){
-        int candidatos = 0;
+        //int candidatos = 0;
         //enquanto nao tiver os 4 candidatos
-        if(candidatos != 4){
+        if(getQuatroAtrizes().size() < 4){
             //percorre o array onde está guardado os candidatos a premiar
             for (int i = 0; i < actress.size(); i++) {
                 Random random = new Random();
@@ -314,7 +343,7 @@ public class Festival {
                 if(!quatroAtrizes.contains(atrizEscolhidaCandidato)){
                     //adiciona ao array que vai guardar os candidatos a ser premiados
                     getQuatroAtrizes().add(atrizEscolhidaCandidato);
-                    candidatos++;
+                   // candidatos++;
                 }
             } 
         }
@@ -323,9 +352,9 @@ public class Festival {
     
     //escolhe as  quatro atrizes
     public void candidatosAtrizPrincipal(){
-        int candidatos = 0;
+        //int candidatos = 0;
         //enquanto nao tiver os 4 candidatos
-        if(candidatos != 4){
+        if(getQuatroAtrizesPrincipais().size() < 4){
             //percorre o array onde está guardado os candidatos a premiar
             for (int i = 0; i < getAtrizesPrincipais().size(); i++) {
                 Random random = new Random();
@@ -337,7 +366,7 @@ public class Festival {
                 if(!quatroAtrizesPrincipais.contains(atrizPrincipalEscolhida)){
                     //adiciona ao array que vai guardar os candidatos a ser premiados
                     getQuatroAtrizesPrincipais().add(atrizPrincipalEscolhida);
-                    candidatos++;
+                    //candidatos++;
                 }
             } 
         }  
@@ -349,20 +378,22 @@ public class Festival {
         //É preciso concatenar os arrays pois os atores e atrizes estao separados 
         //concatenar os arrays dos premios
         //para ser escolhido 4 atores(tanto ator como atriz)
-        premioCarreira.addAll(atoresPremioCarreira);
-        premioCarreira.addAll(atrizesPremioCarreira);
-        int candidato = 0; 
-        if(candidato != 4){
+        candidatosPremioCarreira.addAll(atoresPremioCarreira);
+        candidatosPremioCarreira.addAll(atrizesPremioCarreira);
+        //int candidato = 0; 
+        if(getFinalistasPremioCarreira().size() < 4){
             //percorre o array onde esta os atores para o premio carreira
-            for (int i = 0; i < premioCarreira.size(); i++) {
+            for (int i = 0; i < candidatosPremioCarreira.size(); i++) {
                 Random aleatorio = new Random();
                 //obter um numero aleatorio para obter um candidato aleatorio 
-                int numero = aleatorio.nextInt(premioCarreira.size());
+                int numero = aleatorio.nextInt(candidatosPremioCarreira.size());
                 //obtem o candidato aleatorio 
-                String candidatoCarreiraEscolhido = premioCarreira.get(numero);
-                if(!premioCarreira.contains(candidatoCarreiraEscolhido)){
-                    premioCarreira.add(candidatoCarreiraEscolhido);
-                    candidato++;
+                String candidatoCarreiraEscolhido = candidatosPremioCarreira.get(numero);
+                //if(!candidatosPremioCarreira.contains(candidatoCarreiraEscolhido)){
+                    //candidatosPremioCarreira.add(candidatoCarreiraEscolhido);
+                    //candidato++;
+                if(!getFinalistasPremioCarreira().contains(candidatoCarreiraEscolhido)){
+                    finalistasPremioCarreira.add(candidatoCarreiraEscolhido);
                 }
             }
         }
@@ -416,8 +447,8 @@ public class Festival {
         return atrizesPremioCarreira;
     }
 
-    public ArrayList<String> getPremioCarreira() {
-        return premioCarreira;
+    public ArrayList<String> getCandidatosPremioCarreira() {
+        return candidatosPremioCarreira;
     }
 
     public ArrayList<Atores> getQuatroAtores() {
@@ -432,7 +463,9 @@ public class Festival {
         return quatroAtrizesPrincipais;
     }
 
-
+    public ArrayList<String> getFinalistasPremioCarreira(){
+        return finalistasPremioCarreira;
+    }
 
     
 }

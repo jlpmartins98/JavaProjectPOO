@@ -257,6 +257,20 @@ public class Teste {
                     System.out.println();
                     break;
                 case 9:
+                    //ESTA a dar nullponterexeption again
+                    //preencher os arrays para poder premiar
+                    festival.categoriasFestival();
+                    festival.filmesFestival();
+                    festival.realizadoresFestival();
+                    festival.atoresPrincipais();
+                    festival.atores();
+                    festival.atrizesPrincipais();
+                    festival.atrizes();
+                    festival.candidatosFilmes();
+                    festival.candidatosAtor();
+                    festival.candidatosAtriz();
+                    festival.candidatosAtrizPrincipal();
+                    festival.candidatosPremioCarreira();
                     //listar as categorias a premiar
                     System.out.println("-----------------Categorias a premiar------------------");
                     System.out.println("Melhor Filme");
