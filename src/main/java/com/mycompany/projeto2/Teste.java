@@ -282,7 +282,7 @@ public class Teste {
                     break;
                 case 10: 
                     System.out.println("Saindo da aplicação!");
-                    break;
+                    break;  
                 default:
                     System.out.println("Opção Inválida!");
      
