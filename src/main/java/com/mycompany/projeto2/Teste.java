@@ -256,7 +256,31 @@ public class Teste {
                    // System.out.println(var3);
                     System.out.println();
                     break;
-                case 9: 
+                case 9:
+                    //listar as categorias a premiar
+                    System.out.println("-----------------Categorias a premiar------------------");
+                    System.out.println("Melhor Filme");
+                    System.out.println("Para a categoria de melhor filme, participam: " + festival.getFilmesDoFestival());
+                    System.out.println();
+                    System.out.println("Melhor Realizador");
+                    System.out.println("Para a categoria de melhor realizador, participam: " + festival.getRealizadoresFestival());
+                    System.out.println();
+                    System.out.println("Melhor Ator principal");
+                    System.out.println("Para a categoria de melhor ator principal, participam: " + festival.getAtoresPrincipais());
+                    System.out.println();
+                    System.out.println("Melhor Atriz principal");
+                    System.out.println("Para a categoria de melhor atriz principal, participam: " + festival.getAtrizesPrincipais());
+                    System.out.println();
+                    System.out.println("Melhor Ator secundário");
+                    System.out.println("Para a categoria de melhor ator secundário, participam: " + festival.getActors()); 
+                    System.out.println();
+                    System.out.println("Melhor Atriz secundária");
+                    System.out.println("Para a categoria de melhor atriz secundária, participam: " + festival.getActress());
+                    System.out.println();
+                    System.out.println("Prémio Carreira");
+                    System.out.println("Para esta categora, particam os seguintes atores: " + festival.getAtoresPremioCarreira() + "\n" + festival.getAtrizesPremioCarreira());
+                    break;
+                case 10: 
                     System.out.println("Saindo da aplicação!");
                     break;
                 default:
@@ -264,7 +288,7 @@ public class Teste {
      
             }
             
-        } while (opcao!=9);
+        } while (opcao!=10);
 
     }
     //metodo para apresentar o menu menu
@@ -273,13 +297,15 @@ public class Teste {
             System.out.println("Escolha uma opção");
             System.out.println("1- Criar uma nova Edição");
            // System.out.println("2- Criar Festival a partir de um ficheiro de texto");
-            System.out.println("3- Criar Filmes");
-            System.out.println("4- Criar atores");
-            System.out.println("5- Criar atrizes");
-            System.out.println("6- Atribuir papel principal");
-            System.out.println("7- Atribuir Papel secundário");
-            System.out.println("8- Ver edições");
-            System.out.println("9- Ver atores nos filmes em que participam");
+            System.out.println("2- Criar Filmes");
+            System.out.println("3- Criar atores");
+            System.out.println("4- Criar atrizes");
+            System.out.println("5- Atribuir papel principal");
+            System.out.println("6- Atribuir Papel secundário");
+            System.out.println("7- Ver edições");
+            System.out.println("8- Ver atores nos filmes em que participam");
+            System.out.println("9- Ver categorias as premiar");
+            //System.out.println();
             System.out.println("10- Sair");  
     }
 
