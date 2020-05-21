@@ -235,11 +235,223 @@ public class Teste {
                     }
                     break;
                 case 6:
-                    //escolher as pessoas para os papeis secundarios
-                    //Esta parte é possivelmente desnecessaria como apos escolher os principais obrigatoriamente os outros serao todos secundarios
-                    System.out.println(f.getAtores());
-                    System.out.println(f.getAtriz());
-                    System.out.println();
+                    FileReader inStream = new FileReader("Filmes.txt");
+                    BufferedReader bR = new BufferedReader(inStream);
+                    String a,b,c,line;
+                    String nome;
+                    try{
+                        line = bR.readLine();
+                        while(line!=null){
+                            //falta o ano e numero da ediçao,arranjar um simbolo para esta
+                            //para fazer as atrizes e atores principais basta fazer igual aos atores mas mudando o simbolo
+                            //System.out.println(line);
+                            switch (line.charAt(0)) {
+                                case '-':
+                                    {
+                                        boolean stop = false;
+                                        //enquanto for verdade
+                                        while(!stop){
+                                            line = bR.readLine();
+                                            if(line.charAt(0) == '-'){
+                                                line = bR.readLine();
+                                                break;
+                                            }
+                                            else{
+                                                int ano = Integer.parseInt(line);
+                                                line = bR.readLine();
+                                                int numDeEdicao = Integer.parseInt(line);
+                                                //cria edição, a instanciaçao do festival nao tem q estar fora do ciclo?
+
+                                                ed = new Edicao(ano, numDeEdicao);
+                                                if(festival.contemEdicao(ed)){
+                                                    System.out.println("Ocorreu um erro!" + "\nEste festival já contém esta edição: " + "\n" + ed);
+                                                    System.out.println();
+                                                }
+                                                else{
+                                                festival.addEdicoes(ed);
+                                                //System.out.println(fest.getE());
+                                                }
+                                            }
+                                        }       break;
+                                    }
+                                //Introduz os atores nos filmes 
+                                case ';':
+                                    {
+                                        boolean stop = false;
+                                        while(!stop){
+                                            //cena de escrever os atores
+                                            //le o nome do ator
+                                            line = bR.readLine();
+                                            if(line.charAt(0) == ';'){
+                                                line = bR.readLine();
+                                                break;
+                                            }
+                                            else{
+                                                nome = line;
+                                                line = bR.readLine();
+                                                //le os anos de carreira do ator
+                                                int anosCarreira = Integer.parseInt(line);
+                                                //line = bR.readLine();
+                                                Atores actor1 = new Atores(nome,anosCarreira);
+                                                //estas variaveis sao apenas apra nao escrever aqela parede de texto
+                                                //cada vez que qeremos o filme/edicao que estamos a usar
+                                                Filmes filmeAtual = ed.getFilmes().get(ed.getFilmes().size() - 1);
+                                                Edicao edicaoAtual = festival.getE().get(festival.getE().size() - 1);
+                                                //adicionar as exeçoes do ator ja estar em 2 filmes nesta ediçao ou o caso de ja estar neste filme
+                                                if(!edicaoAtual.maximoAtoresFilmes(actor1)){
+                                                    if(!filmeAtual.atoresRepetidosNoFilme(actor1)) {
+                                                        filmeAtual.addAtores(actor1);
+                                                    }
+                                                    else{
+                                                        System.out.println(actor1);
+                                                        System.out.println("Este ator já participa neste filme!");
+                                                        System.out.println();
+                                                    }
+                                                }
+                                                //alterar estes prints para demonstrar o filme em q nao entrou etc
+                                                //provavelmente dividir o if anterior em dois diferentes
+                                                else{
+                                                    System.out.println(actor1);
+                                                    System.out.println("Este ator já participou em 2 filmes nesta edição");
+                                                    System.out.println();
+                                                }
+                                            }
+                                        }
+                                        //quando acabar, passamos as atrizes e depois temos os dois principais
+                                        break;
+                                    }
+                                case ':':
+                                    {
+                                        boolean stop = false;
+                                        while(!stop){
+                                            //cena de escrever os atores
+                                            //le o nome do ator
+                                            line = bR.readLine();
+                                            if(line.charAt(0) == ':'){
+                                                line = bR.readLine();
+                                                break;
+                                            }
+                                            else{
+                                                nome = line;
+                                                line = bR.readLine();
+                                                //le os anos de carreira do ator
+                                                int anosCarreira = Integer.parseInt(line);
+                                                //line = bR.readLine();
+                                                Atriz atriz1 = new Atriz(nome,anosCarreira);
+                                                Filmes filmeAtual = ed.getFilmes().get(ed.getFilmes().size() - 1);
+                                                Edicao edicaoAtual = festival.getE().get(festival.getE().size() - 1);
+                                                if(!edicaoAtual.maximoAtrizesFilmes(atriz1)){
+                                                    if(!filmeAtual.atrizesRepetidosNoFilme(atriz1)){
+                                                        filmeAtual.addAtriz(atriz1);
+                                                    }
+                                                }
+                                                else{
+                                                    System.out.println("Esta atriz não podes participar neste filme!");
+                                                }
+                                            }
+
+                                        }       
+                                    break;
+                                    }
+                                case '/' :
+                                {
+                                     boolean stop3 = false;
+                                    while(!stop3){
+                                    //em vez de termos o codigo todo do caso no teste,por numa funçao e chamar aqi
+                                    line = bR.readLine();
+                                        if(line.charAt(0) == '/'){
+                                            line = bR.readLine();
+                                            break;
+                                        }
+                                        else{
+                                            nome = line;
+                                            line = bR.readLine();
+                                            //le os anos de carreira do ator
+                                            int anosCarreira = Integer.parseInt(line);
+                                            //line = bR.readLine();
+                                            Atores actor1 = new Atores(nome,anosCarreira);
+                                            //caso nao tenha atores principais
+                                            Filmes filmeAtual = ed.getFilmes().get(ed.getFilmes().size() - 1);
+                                            //Edicao edicaoAtual = festival.getE().get(festival.getE().size() - 1);
+                                            if(filmeAtual.getPrincipaisMale().isEmpty()){
+                                                filmeAtual.addPrincipalMale(actor1);
+                                            }
+                                            else{
+                                                System.out.print("Ocorreu um erro! No filme: ");
+                                                System.out.println(filmeAtual.getNomeFilme());
+                                                System.out.println("Este filme já tem um ator principal");
+                                                System.out.println();
+                                            }
+                                        }
+                                    } 
+                                    break;
+                                }
+                                case '+' :
+                                {
+                                    boolean stop3 = false;
+                                    while(!stop3){
+                                    //em vez de termos o codigo todo do caso no teste,por numa funçao e chamar aqi
+                                        line = bR.readLine();
+                                        if(line.charAt(0) == '+'){
+                                            line = bR.readLine();
+                                            break;
+                                        }
+                                        else{
+                                            nome = line;
+                                            line = bR.readLine();
+                                            //le os anos de carreira do ator
+                                            int anosCarreira = Integer.parseInt(line);
+                                            //line = bR.readLine();
+                                            Atriz actress = new Atriz(nome,anosCarreira);
+                                            Filmes filmeAtual = ed.getFilmes().get(ed.getFilmes().size() - 1);
+                                            //Edicao edicaoAtual = fest.getE().get(fest.getE().size() - 1);
+                                            //caso nao tenha atrizes principais
+                                            if(filmeAtual.getPrincipaisFemale().isEmpty()){
+                                                filmeAtual.addPrincipalFemale(actress);
+                                            }
+                                            else{
+                                                System.out.println("este filme ja tem um ator principal");
+                                            }
+                                        }
+                                    } 
+                                    break;
+                                }
+
+                                default:
+                                    a = line;
+                                    line = bR.readLine();
+                                    b = line;
+                                    line = bR.readLine();
+                                    c = line;
+                                    line = bR.readLine();
+                                    Filmes filmesFicheiro = new Filmes(a,b,c);
+                                    ed.addFilmes(filmesFicheiro);
+                                    break;
+                            }
+
+                        }
+                        bR.close();
+                    }   
+                    catch(IOException ioe){
+                        System.out.println("Ocorreu um erro!");
+                        ioe.getMessage();
+                    }
+                    catch(NullPointerException e){
+                        System.out.println("Ocorreu um erro do tipo NullPointerExeption");
+                        e.getMessage();
+                    }
+
+                    //percorre o array das edições
+                    for (int i = 0; i < festival.getE().size(); i++) {
+                        //for (int j = 0; j < fest.getE().get(i).getFilmes().size(); j++) {
+                        Edicao varEdicaoAtual= festival.getE().get(i);
+                        System.out.println(varEdicaoAtual);
+                        System.out.println();
+                        System.out.println(varEdicaoAtual.getFilmes());
+                        System.out.println();
+
+                    }
+
                     break;
                 case 7:
                     System.out.println(festival.getE());
@@ -270,6 +482,7 @@ public class Teste {
                     festival.candidatosAtor();
                     festival.candidatosAtriz();
                     festival.candidatosAtrizPrincipal();
+                    festival.candidatosAtorPrincipal();
                     festival.candidatosPremioCarreira();
                     //listar as categorias a premiar
                     System.out.println("-----------------Categorias a premiar------------------");
@@ -291,8 +504,9 @@ public class Teste {
                     System.out.println("Melhor Atriz secundária");
                     System.out.println("Para a categoria de melhor atriz secundária, participam: " + festival.getActress());
                     System.out.println();
-                    System.out.println("Prémio Carreira");
-                    System.out.println("Para esta categora, particam os seguintes atores: " + festival.getAtoresPremioCarreira() + "\n" + festival.getAtrizesPremioCarreira());
+                    System.out.println("Prémio Carreira"); 
+                    System.out.println("Para esta categora, particam os seguintes atores: " + festival.getFinalistasPremioCarreira());
+                    System.out.println();
                     break;
                 case 10: 
                     System.out.println("Saindo da aplicação!");
@@ -310,12 +524,11 @@ public class Teste {
         
             System.out.println("Escolha uma opção");
             System.out.println("1- Criar uma nova Edição");
-           // System.out.println("2- Criar Festival a partir de um ficheiro de texto");
             System.out.println("2- Criar Filmes");
             System.out.println("3- Criar atores");
             System.out.println("4- Criar atrizes");
             System.out.println("5- Atribuir papel principal");
-            System.out.println("6- Atribuir Papel secundário");
+            System.out.println("6- Criar Festival a partir de um ficheiro de texto");
             System.out.println("7- Ver edições");
             System.out.println("8- Ver atores nos filmes em que participam");
             System.out.println("9- Ver categorias as premiar");

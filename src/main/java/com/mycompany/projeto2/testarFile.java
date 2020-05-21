@@ -6,7 +6,7 @@
 package com.mycompany.projeto2;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
@@ -176,7 +176,7 @@ public class testarFile {
                                 Atores actor1 = new Atores(nome,anosCarreira);
                                 //caso nao tenha atores principais
                                 Filmes filmeAtual = ed.getFilmes().get(ed.getFilmes().size() - 1);
-                                Edicao edicaoAtual = fest.getE().get(fest.getE().size() - 1);
+                                //Edicao edicaoAtual = fest.getE().get(fest.getE().size() - 1);
                                 if(filmeAtual.getPrincipaisMale().isEmpty()){
                                     filmeAtual.addPrincipalMale(actor1);
                                 }
@@ -208,7 +208,7 @@ public class testarFile {
                                 //line = bR.readLine();
                                 Atriz actress = new Atriz(nome,anosCarreira);
                                 Filmes filmeAtual = ed.getFilmes().get(ed.getFilmes().size() - 1);
-                                Edicao edicaoAtual = fest.getE().get(fest.getE().size() - 1);
+                                //Edicao edicaoAtual = fest.getE().get(fest.getE().size() - 1);
                                 //caso nao tenha atrizes principais
                                 if(filmeAtual.getPrincipaisFemale().isEmpty()){
                                     filmeAtual.addPrincipalFemale(actress);
