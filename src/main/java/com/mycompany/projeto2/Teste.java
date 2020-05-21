@@ -14,7 +14,7 @@ public class Teste {
         Edicao ed = new Edicao();
         Filmes f = new Filmes();
         Festival festival = new Festival();
-        
+        Winners winner = new Winners();
         
         //ciclo para apresentar menu 
         do {
@@ -508,7 +508,15 @@ public class Teste {
                     System.out.println("Para esta categora, particam os seguintes atores: " + festival.getFinalistasPremioCarreira());
                     System.out.println();
                     break;
-                case 10: 
+                case 10:
+                    System.out.println("---------------------------------Vencedores por categoria--------------------------------------------------------");
+                    System.out.println("O premio de carreira vai para: " + winner.get);
+                    
+                    break;
+                case 11:
+                    //caso para ordenar os finalistas pelas pontuaçoes
+                    break;
+                case 12: 
                     System.out.println("Saindo da aplicação!");
                     break;  
                 default:
@@ -516,7 +524,7 @@ public class Teste {
      
             }
             
-        } while (opcao!=10);
+        } while (opcao!=12);
 
     }
     //metodo para apresentar o menu menu
@@ -532,8 +540,9 @@ public class Teste {
             System.out.println("7- Ver edições");
             System.out.println("8- Ver atores nos filmes em que participam");
             System.out.println("9- Ver categorias as premiar");
+            System.out.println("10- Ver os vencedores de cada categoria");
             //System.out.println();
-            System.out.println("10- Sair");  
+            System.out.println("12- Sair");  
     }
 
 }

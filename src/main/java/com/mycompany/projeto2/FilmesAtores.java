@@ -6,7 +6,6 @@ public class FilmesAtores{
     
     private ArrayList<String> atoresFilmes;
     private String name; 
-    private String nomeFilme;
     
     public FilmesAtores(){
         name = "";
