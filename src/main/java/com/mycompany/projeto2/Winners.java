@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
+import java.util.function.ToDoubleFunction;
 /**
  *
  * @author Rodrigo
@@ -34,7 +36,7 @@ public class Winners {
     private ArrayList<Winners> pontuacoesPremioFilme;
     
     private String nome;
-    private double pontuacao;
+    private int pontuacao;
     
     Random random = new Random();
     //Existe alguma maneira de fazer com q este random so possa ir ate o numeroPeritos*10?
@@ -45,24 +47,24 @@ public class Winners {
     //construtores para os vencedores
     public Winners(){
         nome = "";
-        pontuacao = 0.0;
-        this.pontuacoesPremioCarreira = new ArrayList<Winners>();
-        this.pontuacoesPremioAtorSecundario = new ArrayList<Winners>();
-        this.pontuacoesPremioAtorPrincipal = new ArrayList<Winners>();
-        this.pontuacoesPremioAtrizPrincipal = new ArrayList<Winners>();
-        this.pontuacoesPremioAtrizSecundaria = new ArrayList<Winners>();
-        this.pontuacoesPremioFilme = new ArrayList<Winners>();
+        pontuacao = 0;
+        pontuacoesPremioCarreira = new ArrayList<Winners>();
+        pontuacoesPremioAtorSecundario = new ArrayList<Winners>();
+        pontuacoesPremioAtorPrincipal = new ArrayList<Winners>();
+        pontuacoesPremioAtrizPrincipal = new ArrayList<Winners>();
+        pontuacoesPremioAtrizSecundaria = new ArrayList<Winners>();
+        pontuacoesPremioFilme = new ArrayList<Winners>();
     }
     
-    public Winners(String nome,double pontuacao){
-        this.nome = nome;
-        this.pontuacao = pontuacao;
-        this.pontuacoesPremioCarreira = new ArrayList<Winners>();
-        this.pontuacoesPremioAtorSecundario = new ArrayList<Winners>();
-        this.pontuacoesPremioAtorPrincipal = new ArrayList<Winners>();
-        this.pontuacoesPremioAtrizPrincipal = new ArrayList<Winners>();
-        this.pontuacoesPremioAtrizSecundaria = new ArrayList<Winners>();
-        this.pontuacoesPremioFilme = new ArrayList<Winners>();
+    public Winners(String nome,int pontuacao){
+        nome = nome;
+        pontuacao = pontuacao;
+        pontuacoesPremioCarreira = new ArrayList<Winners>();
+        pontuacoesPremioAtorSecundario = new ArrayList<Winners>();
+        pontuacoesPremioAtorPrincipal = new ArrayList<Winners>();
+        pontuacoesPremioAtrizPrincipal = new ArrayList<Winners>();
+        pontuacoesPremioAtrizSecundaria = new ArrayList<Winners>();
+        pontuacoesPremioFilme = new ArrayList<Winners>();
     }
     
     
@@ -78,7 +80,7 @@ public class Winners {
         for (int i = 0; i < 4; i++) {
            int pontuacaoTotal = random.nextInt(numeroPeritos*10);
            String nomeWinnerCarreira = festival.getFinalistasPremioCarreira().get(i);
-           double pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
            Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);  
            this.addPontuacoesPremioCarreira(winnerCarreira);
         }
@@ -93,7 +95,7 @@ public class Winners {
         for (int i = 0; i < 4; i++) {
            int pontuacaoTotal = random.nextInt(numeroPeritos*10);
            String nomeWinnerCarreira = festival.getQuatroAtores().get(i).getNome();
-           double pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
            Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);  
            this.addPontuacoesPremioAtorSecundario(winnerCarreira);
         }
@@ -108,7 +110,7 @@ public class Winners {
         for (int i = 0; i < 4; i++) {
            int pontuacaoTotal = random.nextInt(numeroPeritos*10);
            String nomeWinnerCarreira = festival.getQuatroAtoresPrincipais().get(i);
-           double pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
            Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);
            this.addPontuacoesPremioAtorPrincipal(winnerCarreira);
         }
@@ -122,7 +124,7 @@ public class Winners {
         for (int i = 0; i < 4; i++) {
            int pontuacaoTotal = random.nextInt(numeroPeritos*10);
            String nomeWinnerCarreira = festival.getQuatroAtrizes().get(i).getNome();
-           double pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
            Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);
            this.addPontuacoesPremioAtorSecundario(winnerCarreira);
         }
@@ -136,7 +138,7 @@ public class Winners {
         for (int i = 0; i < 4; i++) {
            int pontuacaoTotal = random.nextInt(numeroPeritos*10);
            String nomeWinnerCarreira = festival.getQuatroAtrizesPrincipais().get(i);
-           double pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
            Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);
            this.addPontuacoesPremioAtorSecundario(winnerCarreira);
         }
@@ -150,7 +152,7 @@ public class Winners {
         for (int i = 0; i < 4; i++) {
            int pontuacaoTotal = random.nextInt(numeroPeritos*10);
            String nomeWinnerCarreira = festival.getQuatroFilmes().get(i);
-           double pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
            Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);
            this.addPontuacoesPremioAtorSecundario(winnerCarreira);
         }
@@ -178,21 +180,28 @@ public class Winners {
     public ArrayList<Winners> getPontuacoesPremioCarreira(){
         return pontuacoesPremioCarreira;
     }
-    public double getPontuacao() {
+    public int getPontuacao() {
         return pontuacao;
     }
-    public int compareTo(Winners winner) {
+    /*public int compareTo(Winners winner) {
         double compareage =((Winners)winner).getPontuacao();
-        /* For Ascending order*/
+        
         return this.pontuacao-compareage;
 
         // For Descending order do like this /
         //return compareage-this.studentage;
     }
+    */
     
     public void ordenaPorPontuacao(ArrayList<Winners> finalistas){
-        
+        Collections.sort(finalistas,new Comparator<Winners>()
+        {
+           public int compare(Winners w1,Winners w2)
+           {
+               return Integer.valueOf(w2.getPontuacao()).compareTo(w1.getPontuacao());
+           } 
+        });
     }
-    
+
     
 }

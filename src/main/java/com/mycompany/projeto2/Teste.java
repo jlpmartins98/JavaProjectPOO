@@ -2,6 +2,7 @@ package com.mycompany.projeto2;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Teste {
@@ -509,9 +510,12 @@ public class Teste {
                     System.out.println();
                     break;
                 case 10:
+                    winner.atribuiPontuacoesPremioAtorPrincipal();
+                    winner.atribuiPontuacoesPremioCarreira();
                     System.out.println("---------------------------------Vencedores por categoria--------------------------------------------------------");
-                    System.out.println("O premio de carreira vai para: " + winner.get);
-                    
+                    System.out.println("O premio de carreira vai para: " + winner.getPontuacoesPremioCarreira());
+                    System.out.println();
+                    System.out.println("O premio de melhor ator principal vai para: " + winner.getPontuacoesPremioAtorPrincipal());
                     break;
                 case 11:
                     //caso para ordenar os finalistas pelas pontuaçoes
@@ -544,5 +548,6 @@ public class Teste {
             //System.out.println();
             System.out.println("12- Sair");  
     }
+    
 
 }

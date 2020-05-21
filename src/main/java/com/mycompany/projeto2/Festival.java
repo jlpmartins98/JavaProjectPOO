@@ -34,6 +34,7 @@ public class Festival {
     private ArrayList<String> quatroFilmes;
     private ArrayList<String> quatroAtoresPrincipais;
     private ArrayList<String> quatroAtrizesPrincipais;
+    private ArrayList<String> quatroRealizadores;
     
     public Festival(){
         e = new ArrayList<Edicao>();
@@ -395,6 +396,14 @@ public class Festival {
     }
     
     
+    /*
+    public void candidatosRealizador(){
+        if(getQuatroRealizadores().size() <= 4)
+    }
+    */
+        
+    
+    
     
     public void candidatosPremioCarreira(){
         //É preciso concatenar os arrays pois os atores e atrizes estao separados 
@@ -423,7 +432,7 @@ public class Festival {
          }
     }
     
-        
+ 
     
     
     
@@ -489,6 +498,10 @@ public class Festival {
 
     public ArrayList<String> getFinalistasPremioCarreira(){
         return finalistasPremioCarreira;
+    }
+    
+    public ArrayList<String> getQuatroRealizadores(){
+        return quatroRealizadores;
     }
   
 }
