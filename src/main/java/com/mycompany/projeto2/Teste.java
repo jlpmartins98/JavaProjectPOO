@@ -510,16 +510,39 @@ public class Teste {
                     System.out.println();
                     break;
                 case 10:
+                    //atribuição das pontuções
                     festival.atribuiPontuacoesPremioAtorPrincipal();
-                    ArrayList<Winners> test1 = festival.getPontuacoesPremioAtorPrincipal();
+                    festival.atribuiPontuacoesPremioAtorSecundario();
+                    festival.atribuiPontuacoesPremioAtrizPrincipal();
+                    festival.atribuiPontuacoesPremioAtrizSecundaria();
                     festival.atribuiPontuacoesPremioCarreira();
-                    ArrayList<Winners> test2 = festival.getPontuacoesPremioCarreira();
+                    festival.atribuiPontuacoesPremioFilmes();
+                    //festival.atribuiPontuacoesRealizador();
+                    
+                    //ordena por pontuções 
                     festival.ordenaPorPontuacao(festival.getPontuacoesPremioAtorPrincipal());
                     festival.ordenaPorPontuacao(festival.getPontuacoesPremioCarreira());
-                    System.out.println("---------------------------------Vencedores por categoria--------------------------------------------------------");
-                    System.out.println("O premio de carreira vai para: " + festival.getPontuacoesPremioCarreira());
+                    festival.ordenaPorPontuacao(festival.getPontuacoesPremioAtorSecundario());
+                    festival.ordenaPorPontuacao(festival.getPontuacoesPremioAtrizPrincipal());
+                    festival.ordenaPorPontuacao(festival.getPontuacoesPremioAtrizSecundaria());
+                    festival.ordenaPorPontuacao(festival.getPontuacoesPremioFilme());
+                    //festival.ordenaPorPontuacao(festival.getPontuacoesPremioRealizador());
+                    festival.ordenaPorPontuacao(festival.getPontuacoesPremioFilme());
+                    System.out.println("--------------------------Candidatos por categoria--------------------------------------");
+                    System.out.println("Candidatos ao prémio de carreira vai para: " + festival.getPontuacoesPremioCarreira());
                     System.out.println();
-                    System.out.println("O premio de melhor ator principal vai para: " + festival.getPontuacoesPremioAtorPrincipal());
+                    System.out.println("Candidatos ao prémio de melhor ator principal vai para: " + festival.getPontuacoesPremioAtorPrincipal());
+                    System.out.println();
+                    System.out.println("Candidatos ao prémio de melhor atriz prinicipal vai para: " + festival.getPontuacoesPremioAtrizPrincipal());
+                    System.out.println();
+                    System.out.println("Candidatos ao prémio de melhor ator secundário vai para: " + festival.getPontuacoesPremioAtorSecundario());
+                    System.out.println();
+                    System.out.println("Candidatos ao prémio de melhor atriz secundário vai para: " + festival.getPontuacoesPremioAtrizSecundaria());
+                    System.out.println();
+                    System.out.println("Candidatos ao prémio de melhor filme vai para: " + festival.getPontuacoesPremioFilme());
+                    System.out.println();
+                    //System.out.println("Candidatos ao prémio de melhor realizador vai para: " + festival.getPontuacoesPremioRealizador());
+                    System.out.println();
                     break;
                 case 11:
                     //caso para ordenar os finalistas pelas pontuaçoes

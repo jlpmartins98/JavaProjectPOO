@@ -21,6 +21,7 @@ public class Festival {
     private ArrayList<Winners> pontuacoesPremioAtrizSecundaria;
     private ArrayList<Winners> pontuacoesPremioAtrizPrincipal;
     private ArrayList<Winners> pontuacoesPremioFilme;
+    private ArrayList<Winners> pontuacoesPremioRealizador;
     
     private String nome;
     private int pontuacao;
@@ -72,13 +73,14 @@ public class Festival {
         quatroFilmes = new ArrayList<String>();
         quatroAtoresPrincipais = new ArrayList<String>();
         quatroAtrizesPrincipais = new ArrayList<String>();
+        
         pontuacoesPremioCarreira = new ArrayList<Winners>();
         pontuacoesPremioAtorSecundario = new ArrayList<Winners>();
         pontuacoesPremioAtorPrincipal = new ArrayList<Winners>();
         pontuacoesPremioAtrizPrincipal = new ArrayList<Winners>();
         pontuacoesPremioAtrizSecundaria = new ArrayList<Winners>();
         pontuacoesPremioFilme = new ArrayList<Winners>();
-    
+        pontuacoesPremioRealizador = new ArrayList<Winners>();
     
     }
 
@@ -421,11 +423,27 @@ public class Festival {
     }
     
     
-    /*
+    //escolher os quatro realizadores 
     public void candidatosRealizador(){
-        if(getQuatroRealizadores().size() <= 4)
+        //enquanto nao tiver os 4 realizadores
+        if(getQuatroRealizadores().size() <= 4){
+            //percorre o array onde está guardado os candidatos a realizador 
+            for (int i = 0; i < getRealizadoresFestival().size(); i++) {
+                Random random = new Random();
+                //obtem um numero aleatorio para obter um candidato aleatorio
+                int numero = random.nextInt(getRealizadoresFestival().size());
+                //otem o candidato de escolha aleatória 
+                String realizadorEscolhido = getRealizadoresFestival().get(numero);
+                //caso ainda nao contenha esse realizador 
+                if(!quatroRealizadores.contains(realizadorEscolhido)){
+                    //adiciona o 
+                    quatroRealizadores.add(realizadorEscolhido);
+                }
+                
+            }
+        }
     }
-    */
+   
         
     
     
@@ -549,17 +567,17 @@ public class Festival {
     }
     
     public void addPontuacoesPremioAtorSecundario(Winners winner){
-        this.getPontuacoesPremioAtorSecundario().add(winner);
+        getPontuacoesPremioAtorSecundario().add(winner);
     }
     
     public void atribuiPontuacoesPremioAtorSecundario(){
         //ciclo para percorrer o array dos atores secundarios escolhidos
         for (int i = 0; i < getQuatroAtores().size(); i++) {
            int pontuacaoTotal = random.nextInt(numeroPeritos*10);
-           String nomeWinnerCarreira = getQuatroAtores().get(i).getNome();
+           String nomeWinnerAtorSecundario= getQuatroAtores().get(i).getNome();
            int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
-           Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);  
-           this.addPontuacoesPremioAtorSecundario(winnerCarreira);
+           Winners winnerCarreira = new Winners(nomeWinnerAtorSecundario,pontuacaoFinal);  
+           addPontuacoesPremioAtorSecundario(winnerCarreira);
         }
     }
     
@@ -588,7 +606,7 @@ public class Festival {
            String nomeWinnerCarreira = getQuatroAtrizes().get(i).getNome();
            int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
            Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);
-           this.addPontuacoesPremioAtorSecundario(winnerCarreira);
+           this.addPontuacoesPremioAtrizSecundaria(winnerCarreira);
         }
     }
     
@@ -602,7 +620,7 @@ public class Festival {
            String nomeWinnerCarreira = getQuatroAtrizesPrincipais().get(i);
            int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
            Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);
-           this.addPontuacoesPremioAtorSecundario(winnerCarreira);
+           this.addPontuacoesPremioAtrizPrincipal(winnerCarreira);
         }
     }
     
@@ -616,7 +634,24 @@ public class Festival {
            String nomeWinnerCarreira = getQuatroFilmes().get(i);
            int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
            Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);
-           this.addPontuacoesPremioAtorSecundario(winnerCarreira);
+           this.addPontuacoesPremioFilmes(winnerCarreira);
+        }
+    } 
+    
+    //adiciona pontuacao
+    public void addPontuacoesPremioRealizador(Winners winner){
+        this.getPontuacoesPremioRealizador().add(winner);
+    }
+    //atribui a pontucao
+    public void atribuiPontuacoesRealizador(){
+        //percorre o array que está os candidatos a melhor realizador 
+        for (int i = 0; i < getQuatroRealizadores().size(); i++) {
+            int pontuacaoTotal = random.nextInt(numeroPeritos*10);
+            String nomeWinnerRealizador = getQuatroRealizadores().get(i);
+            int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+            //instancia um novo winner, que é realizador, com o nome e pontucao 
+            Winners winnerRealizador= new Winners(nomeWinnerRealizador,pontuacaoFinal);
+            this.addPontuacoesPremioRealizador(winnerRealizador);
         }
     }
 
@@ -642,16 +677,10 @@ public class Festival {
     public ArrayList<Winners> getPontuacoesPremioCarreira(){
         return pontuacoesPremioCarreira;
     }
-
-    /*public int compareTo(Winners winner) {
-        double compareage =((Winners)winner).getPontuacao();
-        
-        return this.pontuacao-compareage;
-
-        // For Descending order do like this /
-        //return compareage-this.studentage;
+    public ArrayList<Winners> getPontuacoesPremioRealizador(){
+        return pontuacoesPremioRealizador;
     }
-    */
+
     
     public void ordenaPorPontuacao(ArrayList<Winners> finalistas){
         
