@@ -510,12 +510,16 @@ public class Teste {
                     System.out.println();
                     break;
                 case 10:
-                    winner.atribuiPontuacoesPremioAtorPrincipal();
-                    winner.atribuiPontuacoesPremioCarreira();
+                    festival.atribuiPontuacoesPremioAtorPrincipal();
+                    ArrayList<Winners> test1 = festival.getPontuacoesPremioAtorPrincipal();
+                    festival.atribuiPontuacoesPremioCarreira();
+                    ArrayList<Winners> test2 = festival.getPontuacoesPremioCarreira();
+                    festival.ordenaPorPontuacao(festival.getPontuacoesPremioAtorPrincipal());
+                    festival.ordenaPorPontuacao(festival.getPontuacoesPremioCarreira());
                     System.out.println("---------------------------------Vencedores por categoria--------------------------------------------------------");
-                    System.out.println("O premio de carreira vai para: " + winner.getPontuacoesPremioCarreira());
+                    System.out.println("O premio de carreira vai para: " + festival.getPontuacoesPremioCarreira());
                     System.out.println();
-                    System.out.println("O premio de melhor ator principal vai para: " + winner.getPontuacoesPremioAtorPrincipal());
+                    System.out.println("O premio de melhor ator principal vai para: " + festival.getPontuacoesPremioAtorPrincipal());
                     break;
                 case 11:
                     //caso para ordenar os finalistas pelas pontuaçoes

@@ -6,6 +6,8 @@
 package com.mycompany.projeto2;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 
 /**
@@ -13,6 +15,21 @@ import java.util.Random;
  * @author joaomartins
  */
 public class Festival {
+    private ArrayList<Winners> pontuacoesPremioCarreira;
+    private ArrayList<Winners> pontuacoesPremioAtorSecundario;
+    private ArrayList<Winners> pontuacoesPremioAtorPrincipal;
+    private ArrayList<Winners> pontuacoesPremioAtrizSecundaria;
+    private ArrayList<Winners> pontuacoesPremioAtrizPrincipal;
+    private ArrayList<Winners> pontuacoesPremioFilme;
+    
+    private String nome;
+    private int pontuacao;
+    
+    Random random = new Random();
+    //Existe alguma maneira de fazer com q este random so possa ir ate o numeroPeritos*10?
+    //gera um random para a pontuacao de 0 a 101
+    int  numeroPeritos = random.nextInt(10) + 1;
+
     //array para as edições 
     private ArrayList<Edicao> e;
     private ArrayList<FilmesAtores> filmesDosAtores;
@@ -55,6 +72,14 @@ public class Festival {
         quatroFilmes = new ArrayList<String>();
         quatroAtoresPrincipais = new ArrayList<String>();
         quatroAtrizesPrincipais = new ArrayList<String>();
+        pontuacoesPremioCarreira = new ArrayList<Winners>();
+        pontuacoesPremioAtorSecundario = new ArrayList<Winners>();
+        pontuacoesPremioAtorPrincipal = new ArrayList<Winners>();
+        pontuacoesPremioAtrizPrincipal = new ArrayList<Winners>();
+        pontuacoesPremioAtrizSecundaria = new ArrayList<Winners>();
+        pontuacoesPremioFilme = new ArrayList<Winners>();
+    
+    
     }
 
     //metodo para adicionar filmes a uma edicao 
@@ -503,5 +528,141 @@ public class Festival {
     public ArrayList<String> getQuatroRealizadores(){
         return quatroRealizadores;
     }
+    
+    //------------------------------------------------------------------
+    
+      
+    
+    public void addPontuacoesPremioCarreira(Winners winner){
+        pontuacoesPremioCarreira.add(winner);
+    }
+    
+    public void atribuiPontuacoesPremioCarreira(){
+        //ciclo para percorrer o array dos finalistasPremioCarreira
+        for (int i = 0; i < getFinalistasPremioCarreira().size(); i++) {
+           int pontuacaoTotal = random.nextInt(numeroPeritos*10);
+           String nomeWinnerCarreira = getFinalistasPremioCarreira().get(i);
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);  
+           addPontuacoesPremioCarreira(winnerCarreira);
+        }
+    }
+    
+    public void addPontuacoesPremioAtorSecundario(Winners winner){
+        this.getPontuacoesPremioAtorSecundario().add(winner);
+    }
+    
+    public void atribuiPontuacoesPremioAtorSecundario(){
+        //ciclo para percorrer o array dos atores secundarios escolhidos
+        for (int i = 0; i < getQuatroAtores().size(); i++) {
+           int pontuacaoTotal = random.nextInt(numeroPeritos*10);
+           String nomeWinnerCarreira = getQuatroAtores().get(i).getNome();
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);  
+           this.addPontuacoesPremioAtorSecundario(winnerCarreira);
+        }
+    }
+    
+    public void addPontuacoesPremioAtorPrincipal(Winners winner){
+        this.getPontuacoesPremioAtorPrincipal().add(winner);
+    }
+    
+    public void atribuiPontuacoesPremioAtorPrincipal(){
+        //ciclo para percorrer o array dos atores principais escolhidos
+        for (int i = 0; i < getQuatroAtoresPrincipais().size(); i++) {
+           int pontuacaoTotal = random.nextInt(numeroPeritos*10);
+           String nomeWinnerCarreira = getQuatroAtoresPrincipais().get(i);
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);
+           this.addPontuacoesPremioAtorPrincipal(winnerCarreira);
+        }
+    }
+    
+    public void addPontuacoesPremioAtrizSecundaria(Winners winner){
+        this.getPontuacoesPremioAtrizSecundaria().add(winner);
+    }
+    
+    public void atribuiPontuacoesPremioAtrizSecundaria(){
+        for (int i = 0; i < getQuatroAtrizes().size(); i++) {
+           int pontuacaoTotal = random.nextInt(numeroPeritos*10);
+           String nomeWinnerCarreira = getQuatroAtrizes().get(i).getNome();
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);
+           this.addPontuacoesPremioAtorSecundario(winnerCarreira);
+        }
+    }
+    
+    public void addPontuacoesPremioAtrizPrincipal(Winners winner){
+        this.getPontuacoesPremioAtrizPrincipal().add(winner);
+    }
+    
+    public void atribuiPontuacoesPremioAtrizPrincipal(){
+        for (int i = 0; i < getQuatroAtrizesPrincipais().size(); i++) {
+           int pontuacaoTotal = random.nextInt(numeroPeritos*10);
+           String nomeWinnerCarreira = getQuatroAtrizesPrincipais().get(i);
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);
+           this.addPontuacoesPremioAtorSecundario(winnerCarreira);
+        }
+    }
+    
+    public void addPontuacoesPremioFilmes(Winners winner){
+        this.getPontuacoesPremioFilme().add(winner);
+    }
+    
+    public void atribuiPontuacoesPremioFilmes(){
+        for (int i = 0; i < getQuatroFilmes().size(); i++) {
+           int pontuacaoTotal = random.nextInt(numeroPeritos*10);
+           String nomeWinnerCarreira = getQuatroFilmes().get(i);
+           int pontuacaoFinal = (pontuacaoTotal / numeroPeritos);
+           Winners winnerCarreira = new Winners(nomeWinnerCarreira,pontuacaoFinal);
+           this.addPontuacoesPremioAtorSecundario(winnerCarreira);
+        }
+    }
+
+    public ArrayList<Winners> getPontuacoesPremioAtorSecundario() {
+        return pontuacoesPremioAtorSecundario;
+    }
+
+    public ArrayList<Winners> getPontuacoesPremioAtorPrincipal() {
+        return pontuacoesPremioAtorPrincipal;
+    }
+
+    public ArrayList<Winners> getPontuacoesPremioAtrizSecundaria() {
+        return pontuacoesPremioAtrizSecundaria;
+    }
+
+    public ArrayList<Winners> getPontuacoesPremioAtrizPrincipal() {
+        return pontuacoesPremioAtrizPrincipal;
+    }
+
+    public ArrayList<Winners> getPontuacoesPremioFilme() {
+        return pontuacoesPremioFilme;
+    }
+    public ArrayList<Winners> getPontuacoesPremioCarreira(){
+        return pontuacoesPremioCarreira;
+    }
+
+    /*public int compareTo(Winners winner) {
+        double compareage =((Winners)winner).getPontuacao();
+        
+        return this.pontuacao-compareage;
+
+        // For Descending order do like this /
+        //return compareage-this.studentage;
+    }
+    */
+    
+    public void ordenaPorPontuacao(ArrayList<Winners> finalistas){
+        
+        Collections.sort(finalistas,new Comparator<Winners>()
+        {
+           public int compare(Winners w1,Winners w2)
+           {
+               return Integer.valueOf(w2.getPontuacao()).compareTo(w1.getPontuacao());
+           } 
+        });
+    }
+
   
 }
