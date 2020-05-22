@@ -67,7 +67,9 @@ public class Edicao {
         
     }
     
+    //metodo para verificar se a ediçao ja contem o filme que qeremos adicionar
     public boolean contemFilme(Filmes movie){
+        //percorre o array de filmes da ediçao
         for(int i=0;i < this.filmes.size(); i++){
             if(this.getFilmes().get(i).getNomeFilme().equals(movie.getNomeFilme())){
                 return true;
@@ -78,7 +80,7 @@ public class Edicao {
     
 
     
-    //verifica se tem mais de 2 atores nos filmes, em cada edição
+    //verifica se o ator ja participou em dois filmes nesta ediçao
     public boolean maximoAtoresFilmes(Atores act){
         int contador = 0; 
 
@@ -104,7 +106,7 @@ public class Edicao {
         return false;
     }
     
-    //verifica se tem mais de duas atrizes nos filmes, em cada edição
+    //verifica se a atriz ja participou em dois filmes nesta ediçao
     public boolean maximoAtrizesFilmes(Atriz act){
         int contador = 0; 
 

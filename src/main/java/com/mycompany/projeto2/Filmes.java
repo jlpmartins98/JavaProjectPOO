@@ -104,7 +104,7 @@ public class Filmes extends Edicao{
         info += "Género do filme: " + genero + "\n";
         info += "Realizador: " + realizador + "\n";
         //mudar de "atores do filme" para "atores secundarios"
-        info += "Atores do filme: " + atores + "\n" + atriz;
+        info += "Atores secundarios " + atores + "\n" + atriz;
         info += "Ator principal:" + atoresPrincipais + "\nAtriz principal: " + atrizesPrincipais +"\n";
         return info;
     }
@@ -130,15 +130,18 @@ public class Filmes extends Edicao{
      * nao deixa criar o ator 
      */
     
+    //funcao para verificar se este ator ja participa no filme
     public boolean atoresRepetidosNoFilme(Atores actor){
+        //percorre o array dos atores do filme
         for(int i= 0; i< this.atores.size(); i++){
             if(this.getAtores().get(i).getNome().equals(actor.getNome()))
                 return true;
         }
         return false;
     }
-    
+    //funcao para verificar se esta atriz ja participa no filme
     public boolean atrizesRepetidosNoFilme(Atriz atz){
+        //percorre o array das atrizes do filme
         for(int i= 0; i< this.getAtriz().size(); i++){
             if(this.getAtriz().get(i).getNome().equals(atz.getNome()))
                 return true;

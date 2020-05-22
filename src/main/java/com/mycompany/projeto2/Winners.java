@@ -7,7 +7,7 @@ public class Winners {
     private int pontuacao;
     
     
-    //construtores para os vencedores
+    //construtores para os vencedores e candidatos a cada premio
     public Winners(){
         nome = "";
         pontuacao = 0;
@@ -24,7 +24,7 @@ public class Winners {
         return pontuacao;
     }
     
-    //informação do vencedor 
+    //informação do vencedor/candidatos ao premio 
     public String toString(){
         String info;
         info = "Nome: " + this.nome;

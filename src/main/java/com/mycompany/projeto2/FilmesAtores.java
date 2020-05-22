@@ -20,10 +20,7 @@ public class FilmesAtores{
     }
 
     
-    //metodo para addicionar o nome do filme ao ator
-    public void addNomeFilme(String nomeDoFilme){
-        this.atoresFilmes.add(nomeDoFilme);
-    }
+    
     
     public String toString(){
         String info;
@@ -32,8 +29,13 @@ public class FilmesAtores{
         return info;
     }
     
+    //metodo para ir buscar o nome do ator
     public String getName() {
         return name;
+    }
+    //metodo para addicionar o nome do filme ao ator
+    public void addNomeFilme(String nomeDoFilme){
+        this.atoresFilmes.add(nomeDoFilme);
     }
     
     

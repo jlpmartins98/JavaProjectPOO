@@ -11,7 +11,7 @@ public class Atriz extends Filmes{
     private String nome;
     private int anosCarreira; 
     
-    //Construtores para os atores 
+    //Construtores para as atrizes 
     public Atriz(){ 
         nome = "";
         anosCarreira = 0; 
@@ -22,7 +22,7 @@ public class Atriz extends Filmes{
         this.anosCarreira = anosCarreira;
     }
     
-    //set e get para atores
+    //set e get para atrizes
     public String getNome() {
         return nome;
     }
@@ -39,7 +39,7 @@ public class Atriz extends Filmes{
         this.anosCarreira = anosCarreira;
     }
     
-    //informação dos atores 
+    //informação dos atrizes 
     public String toString(){
         String info;
         //info = super.toString();

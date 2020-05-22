@@ -7,6 +7,6 @@ package com.mycompany.projeto2;
  */
 public class AtoresSecundarios extends Atores{
     
-    
+    //tambem nao é usada?
     
 }

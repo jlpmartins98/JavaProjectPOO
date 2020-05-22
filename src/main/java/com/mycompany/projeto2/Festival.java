@@ -120,6 +120,7 @@ public class Festival {
         return filmesDosAtores;
     }
     
+    //funcao para verificar se o ator ja participa em algum filme
     public boolean atorExistente(String nome){
         //percorre o array onde tem os atores e os filmes em que participam
         for(int i=0;i < this.getFilmesDosAtores().size();i++){
@@ -131,6 +132,11 @@ public class Festival {
         return false;
     }
     
+    /**
+     * esta funcao é usada para criar o array dos atores e os filmes em que participam
+     * usamos esta funcao quando sabemos que o ator ja participou num filme e queremos
+     * adicionar outro filme ao seu array de filmes em que participou
+    */
     public int posicaoAtorExistente(String nome){
         //percorre o array onde tem os atores e os filmes em que participam
         for(int i=0; i < this.getFilmesDosAtores().size();i++){
@@ -142,7 +148,7 @@ public class Festival {
         return 50;
     }
     
-    //QUAL O PREMIO EM QUE ENVOLVE AS CATEGORIAS, MELHOR FILME DA CATEGORIA?
+    
     //funcao para guardar todos os generos de filme, depois sera usada para a pontuaçao
     public void categoriasFestival(){
         //percorre as ediçoes
@@ -248,7 +254,7 @@ public class Festival {
             }
         }
     }
-    
+    //guarda todas as atrizesPrincipais
     public void atrizesPrincipais(){
         //percorre as ediçoes
         int numeroEdicoes = this.getE().size();
@@ -276,7 +282,7 @@ public class Festival {
         }
     }
     
-    //guarda todos os atores 
+    //guarda todos as atrizes 
     public void atrizes(){
         //percorre as edições
         int numEdicoes = this.getE().size();
