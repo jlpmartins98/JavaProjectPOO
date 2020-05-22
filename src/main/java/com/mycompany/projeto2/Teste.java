@@ -109,9 +109,9 @@ public class Teste {
                                         //f.addAtores(new Atores(br.readLine(),scan.nextInt()));
                                         Atores a = new Atores(br.readLine(),scan.nextInt());
 
-                                        boolean var = ed.maximoAtoresFilmes(a);
+                                        int var = ed.maximoAtoresFilmes(a);
                                         //caso o ator ja tenha participado em dois filmes nesta ediçao
-                                        if(var)
+                                        if(var >= 2)
                                             System.out.println("Este ator ja participou em dois filmes nesta edicao");
                                         else{
                                             //caso este ator ja esteja neste filme 
@@ -169,8 +169,8 @@ public class Teste {
                                         System.out.println("A criar atrizes");
                                         System.out.println("Introduza o nome da atriz e na linha abaixo introduza os seus anos de carreira");
                                         Atriz atz = new Atriz(br.readLine(),scan.nextInt());
-                                        boolean variavel = ed.maximoAtrizesFilmes(atz);
-                                        if(variavel)
+                                        int variavel = ed.maximoAtrizesFilmes(atz);
+                                        if(variavel >= 2)
                                             System.out.println("Esta atriz ja participou em dois filmes nesta edicao");
                                         //verifica se há atrizes repetidas num filme
                                         else{
@@ -328,7 +328,7 @@ public class Teste {
                                                             Filmes filmeAtual = ed.getFilmes().get(ed.getFilmes().size() - 1);
                                                             Edicao edicaoAtual = festival.getE().get(festival.getE().size() - 1);
                                                             //adicionar as exeçoes do ator ja estar em 2 filmes nesta ediçao ou o caso de ja estar neste filme
-                                                            if(!edicaoAtual.maximoAtoresFilmes(actor1)){
+                                                            if(edicaoAtual.maximoAtoresFilmes(actor1) < 2){
                                                                 if(!filmeAtual.atoresRepetidosNoFilme(actor1)) {
                                                                     filmeAtual.addAtores(actor1);
                                                                     FilmesAtores faFicheiro = new FilmesAtores(actor1.getNome());
@@ -373,7 +373,7 @@ public class Teste {
                                                             Atriz atriz1 = new Atriz(nome,anosCarreira);
                                                             Filmes filmeAtual = ed.getFilmes().get(ed.getFilmes().size() - 1);
                                                             Edicao edicaoAtual = festival.getE().get(festival.getE().size() - 1);
-                                                            if(!edicaoAtual.maximoAtrizesFilmes(atriz1)){
+                                                            if(edicaoAtual.maximoAtrizesFilmes(atriz1) < 2){
                                                                 if(!filmeAtual.atrizesRepetidosNoFilme(atriz1)){
                                                                     filmeAtual.addAtriz(atriz1);
                                                                     FilmesAtores faFicheiro = new FilmesAtores(atriz1.getNome());
@@ -512,7 +512,6 @@ public class Teste {
                             System.out.println();
                             break;
                         case 9:
-                            //ESTA a dar nullponterexeption again
                             //preencher os arrays para poder premiar
                             festival.categoriasFestival();
                             festival.filmesFestival();
@@ -521,6 +520,7 @@ public class Teste {
                             festival.atores();
                             festival.atrizesPrincipais();
                             festival.atrizes();
+                            festival.candidatosRealizador();
                             festival.candidatosFilmes();
                             festival.candidatosAtor();
                             festival.candidatosAtriz();
@@ -533,7 +533,7 @@ public class Teste {
                             System.out.println("Para a categoria de melhor filme, participam: " + festival.getFilmesDoFestival());
                             System.out.println();
                             System.out.println("Melhor Realizador");
-                            System.out.println("Para a categoria de melhor realizador, participam: " + festival.getRealizadoresFestival());
+                            System.out.println("Para a categoria de melhor realizador, participam: " + festival.getQuatroRealizadores());
                             System.out.println();
                             System.out.println("Melhor Ator principal");
                             System.out.println("Para a categoria de melhor ator principal, participam: " + festival.getAtoresPrincipais());
@@ -559,7 +559,8 @@ public class Teste {
                             festival.atribuiPontuacoesPremioAtrizSecundaria();
                             festival.atribuiPontuacoesPremioCarreira();
                             festival.atribuiPontuacoesPremioFilmes();
-                            //festival.atribuiPontuacoesRealizador();
+                            festival.atribuiPontuacoesRealizador();
+                            ArrayList<Winners> teste = festival.getPontuacoesPremioRealizador();
 
                             //ordena por pontuções 
                             festival.ordenaPorPontuacao(festival.getPontuacoesPremioAtorPrincipal());
@@ -568,7 +569,7 @@ public class Teste {
                             festival.ordenaPorPontuacao(festival.getPontuacoesPremioAtrizPrincipal());
                             festival.ordenaPorPontuacao(festival.getPontuacoesPremioAtrizSecundaria());
                             festival.ordenaPorPontuacao(festival.getPontuacoesPremioFilme());
-                            //festival.ordenaPorPontuacao(festival.getPontuacoesPremioRealizador());
+                            festival.ordenaPorPontuacao(festival.getPontuacoesPremioRealizador());
                             festival.ordenaPorPontuacao(festival.getPontuacoesPremioFilme());
                             //prints para mostrar os candidatos a cada premio ordenados por pontuacao, tal com oo vencedor de cada categoria
                             /**
@@ -600,9 +601,9 @@ public class Teste {
                             System.out.println();
                             System.out.println("O premio de melhor filme vai para: " + festival.getPontuacoesPremioFilme().get(0));
                             System.out.println();
-                            /*System.out.println("Candidatos ao prémio de melhor realizador vai para: " + festival.getPontuacoesPremioRealizador());
+                            System.out.println("Candidatos ao prémio de melhor realizador vai para: " + festival.getPontuacoesPremioRealizador());
                             System.out.println("O premio de melhor realizador vai para: " + festival.getPontuacoesPremioRealizador().get(0));
-                            System.out.println();*/
+                            System.out.println();
                             System.out.println();
                             break;
                         case 11: 

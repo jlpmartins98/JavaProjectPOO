@@ -15,6 +15,7 @@ import java.util.Random;
  * @author joaomartins
  */
 public class Festival {
+    //Arrays para fazer as pontuacoes finais
     private ArrayList<Winners> pontuacoesPremioCarreira;
     private ArrayList<Winners> pontuacoesPremioAtorSecundario;
     private ArrayList<Winners> pontuacoesPremioAtorPrincipal;
@@ -22,9 +23,6 @@ public class Festival {
     private ArrayList<Winners> pontuacoesPremioAtrizPrincipal;
     private ArrayList<Winners> pontuacoesPremioFilme;
     private ArrayList<Winners> pontuacoesPremioRealizador;
-    
-    private String nome;
-    private int pontuacao;
     
     Random random = new Random();
     //Existe alguma maneira de fazer com q este random so possa ir ate o numeroPeritos*10?
@@ -42,11 +40,8 @@ public class Festival {
     private ArrayList<Atores> actors;
     private ArrayList<Atriz> actress;
     
-    //private ArrayList<String> atoresPremioCarreira;
-    //private ArrayList<String> atrizesPremioCarreira;
     private ArrayList<String> candidatosPremioCarreira;
     private ArrayList<String> finalistasPremioCarreira;
-    
     private ArrayList<Atores> quatroAtores;
     private ArrayList<Atriz> quatroAtrizes;
     private ArrayList<String> quatroFilmes;
@@ -73,6 +68,7 @@ public class Festival {
         quatroFilmes = new ArrayList<String>();
         quatroAtoresPrincipais = new ArrayList<String>();
         quatroAtrizesPrincipais = new ArrayList<String>();
+        quatroRealizadores = new ArrayList<String>();
         
         pontuacoesPremioCarreira = new ArrayList<Winners>();
         pontuacoesPremioAtorSecundario = new ArrayList<Winners>();
@@ -443,7 +439,7 @@ public class Festival {
                 //caso ainda nao contenha esse realizador 
                 if(!quatroRealizadores.contains(realizadorEscolhido)){
                     //adiciona o 
-                    quatroRealizadores.add(realizadorEscolhido);
+                    getQuatroRealizadores().add(realizadorEscolhido);
                 }
                 
             }
@@ -520,14 +516,6 @@ public class Festival {
     public ArrayList<Atriz> getQuatroAtrizes() {
         return quatroAtrizes;
     }
-
-   // public ArrayList<String> getAtoresPremioCarreira() {
-     //   return atoresPremioCarreira;
-    //}
-
-    //public ArrayList<String> getAtrizesPremioCarreira() {
-    //    return atrizesPremioCarreira;
-    //}
 
     public ArrayList<String> getCandidatosPremioCarreira() {
         return candidatosPremioCarreira;

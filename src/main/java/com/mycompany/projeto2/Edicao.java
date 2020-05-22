@@ -81,7 +81,7 @@ public class Edicao {
 
     
     //verifica se o ator ja participou em dois filmes nesta ediçao
-    public boolean maximoAtoresFilmes(Atores act){
+    public int maximoAtoresFilmes(Atores act){
         int contador = 0; 
 
                //percorre o array dos filmes 
@@ -90,46 +90,48 @@ public class Edicao {
                 //percorre o array dos atores do filme na posiçao i
                 for (int j = 0; j < this.getFilmes().get(i).getAtores().size(); j++)
                 {
+                    //caso ja tenha aparecido em dois filmes
+                    if(contador == 2){
+                        return contador;
+                    }
                     //verifica se o ator ja apareceu em algum filme
-                    if(contador != 1){
-                        //caso tenha incrementa o contador
-                        if(this.getFilmes().get(i).getAtores().get(j).getNome().equals(act.getNome())){
-                            contador++;
+                    else if(this.getFilmes().get(i).getAtores().get(j).getNome().equals(act.getNome())){
+                        //caso tenha incrementa o contador    
+                        contador++;
                         }
-                    }
+                    //}
                     //caso o ator ja tenha participado em mais que dois filmes nesta ediçao
-                    else{
-                        return true;
-                    }
+                    
                 }
             }
-        return false;
+            return contador;
     }
     
     //verifica se a atriz ja participou em dois filmes nesta ediçao
-    public boolean maximoAtrizesFilmes(Atriz act){
+    public int maximoAtrizesFilmes(Atriz act){
         int contador = 0; 
 
-               //percorre o array dos filmes 
+            //percorre o array dos filmes 
             for (int i = 0; i < this.filmes.size(); i++) 
             {
                 //percorre o array das atrizes do filme na posiçao i
                 for (int j = 0; j < this.getFilmes().get(i).getAtriz().size(); j++)
                 {
-                    //verifica se o ator ja apareceu em algum filme
-                    if(contador != 1){
-                        //caso tenha incrementa o contador
-                        if(this.getFilmes().get(i).getAtriz().get(j).getNome().equals(act.getNome())){
-                            contador++;
+                    //caso ja tenha aparecido em dois filmes
+                    if(contador == 2){
+                        return contador;
+                    }
+                    //verifica se a atriz ja apareceu em algum filme    
+                    else if(this.getFilmes().get(i).getAtriz().get(j).getNome().equals(act.getNome())){
+                        //caso tenha incrementa o contador    
+                        contador++;
                         }
-                    }
+                    
                     //caso a atriz ja tenha participado em mais que dois filmes nesta ediçao
-                    else{
-                        return true;
-                    }
+                   
                 }
             }
-        return false;
+        return contador;
     }
     
     
