@@ -1,8 +1,6 @@
 package com.mycompany.projeto2;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class Edicao {
@@ -99,9 +97,7 @@ public class Edicao {
                         //caso tenha incrementa o contador    
                         contador++;
                         }
-                    //}
-                    //caso o ator ja tenha participado em mais que dois filmes nesta ediçao
-                    
+ 
                 }
             }
             return contador;
@@ -126,9 +122,7 @@ public class Edicao {
                         //caso tenha incrementa o contador    
                         contador++;
                         }
-                    
-                    //caso a atriz ja tenha participado em mais que dois filmes nesta ediçao
-                   
+   
                 }
             }
         return contador;

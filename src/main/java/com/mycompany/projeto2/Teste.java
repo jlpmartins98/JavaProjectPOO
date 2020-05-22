@@ -2,7 +2,6 @@ package com.mycompany.projeto2;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -16,9 +15,7 @@ public class Teste {
         Edicao ed = new Edicao();
         Filmes f = new Filmes();
         Festival festival = new Festival();
-        Winners winner = new Winners();
-        
-        
+   
             //ciclo para apresentar menu 
             do {
                 try{
@@ -486,7 +483,7 @@ public class Teste {
 
                             //percorre o array das edições
                             for (int i = 0; i < festival.getE().size(); i++) {
-                                //for (int j = 0; j < fest.getE().get(i).getFilmes().size(); j++) {
+                                
                                 Edicao varEdicaoAtual= festival.getE().get(i);
                                 System.out.println(varEdicaoAtual);
                                 System.out.println();
@@ -506,9 +503,7 @@ public class Teste {
                             break; 
                         case 8:
                             ArrayList<FilmesAtores> var2 = festival.getFilmesDosAtores();
-                          //ArrayList<FilmesAtrizes> var3 = festival.getFilmesDasAtrizes();
                             System.out.println(var2);
-                           // System.out.println(var3);
                             System.out.println();
                             break;
                         case 9:

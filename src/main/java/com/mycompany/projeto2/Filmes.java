@@ -1,7 +1,6 @@
 package com.mycompany.projeto2;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 
 public class Filmes extends Edicao{
@@ -120,15 +119,6 @@ public class Filmes extends Edicao{
     public void setRealizador(String realizador) {
         this.realizador = realizador;
     }
-
-
-    /**
-     * criar contador ao criar atores para um certo filme
-     * acede atores verifica se ja esta nesse filme 
-     * e dentro do ciclo incrementa
-     * caso esteja em 2 filmes
-     * nao deixa criar o ator 
-     */
     
     //funcao para verificar se este ator ja participa no filme
     public boolean atoresRepetidosNoFilme(Atores actor){

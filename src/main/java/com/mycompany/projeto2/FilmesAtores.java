@@ -9,13 +9,11 @@ public class FilmesAtores{
     
     public FilmesAtores(){
         name = "";
-        //nomeFilme= "";
         this.atoresFilmes = new ArrayList<String>();
     }
     
     public FilmesAtores(String name){
         this.name = name;
-        //this.nomeFilme = nomeFilme;
         atoresFilmes = new ArrayList<String>();
     }
 

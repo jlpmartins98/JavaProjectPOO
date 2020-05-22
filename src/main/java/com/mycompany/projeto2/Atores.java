@@ -1,9 +1,5 @@
 package com.mycompany.projeto2;
 
-import java.io.Serializable;
-
-
-
 public class Atores extends Filmes {
     
     //variaveis de instancia 

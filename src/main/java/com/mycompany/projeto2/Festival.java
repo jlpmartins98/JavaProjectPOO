@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.projeto2;
 
 import java.util.ArrayList;
@@ -10,10 +5,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
-/**
- *
- * @author joaomartins
- */
 public class Festival {
     //Arrays para fazer as pontuacoes finais
     private ArrayList<Winners> pontuacoesPremioCarreira;
@@ -25,7 +16,6 @@ public class Festival {
     private ArrayList<Winners> pontuacoesPremioRealizador;
     
     Random random = new Random();
-    //Existe alguma maneira de fazer com q este random so possa ir ate o numeroPeritos*10?
     //gera um random para a pontuacao de 0 a 101
     int  numeroPeritos = random.nextInt(10) + 1;
 
@@ -59,8 +49,6 @@ public class Festival {
         filmesDoFestival = new ArrayList<String>();
         actors = new ArrayList<Atores>();
         actress = new ArrayList<Atriz>();
-        //atoresPremioCarreira = new ArrayList<String>();
-        //atrizesPremioCarreira = new ArrayList<String>();
         candidatosPremioCarreira = new ArrayList<String>();
         finalistasPremioCarreira = new ArrayList<String>();
         quatroAtores = new ArrayList<Atores>();
@@ -448,15 +436,9 @@ public class Festival {
    
         
     
-    
+    //escolhe os quatro candidatos ao premio carreira
     
     public void candidatosPremioCarreira(){
-        //É preciso concatenar os arrays pois os atores e atrizes estao separados 
-        //concatenar os arrays dos premios
-        //para ser escolhido 4 atores(tanto ator como atriz)
-        //candidatosPremioCarreira.addAll(atoresPremioCarreira);
-        //candidatosPremioCarreira.addAll(atrizesPremioCarreira);
-        //int candidato = 0; 
         if(getFinalistasPremioCarreira().size() <= 4){
             
             //percorre o array onde esta os atores para o premio carreira
@@ -676,12 +658,16 @@ public class Festival {
     }
 
     
+    //ordena os arrays por pontuação
     public void ordenaPorPontuacao(ArrayList<Winners> finalistas){
         
+        //faz um sort ao array finalistas
+        //redifinição de metodo compara
         Collections.sort(finalistas,new Comparator<Winners>()
         {
            public int compare(Winners w1,Winners w2)
-           {
+           {    
+               //compara a pontuacao de dois objetos da classe winners 
                return Integer.valueOf(w2.getPontuacao()).compareTo(w1.getPontuacao());
            } 
         });

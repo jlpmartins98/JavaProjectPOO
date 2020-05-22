@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.projeto2;
 
 public class Atriz extends Filmes{
     
-        //variaveis de instancia 
+    //variaveis de instancia 
     private String nome;
     private int anosCarreira; 
     
